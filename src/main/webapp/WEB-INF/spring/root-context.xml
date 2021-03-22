@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- DB연결 pool 객체 생성 -->
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property name="username" value="user01"></property>
+		<property name="password" value="user01"></property>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"></property>
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+	</bean>
+	<!-- 얘네가 한 20개씩 만들어두고 하나씩 빌려주는 것 -->
+	
+	<!-- Connection객체와 xml파일의 위치를 알려주는 클래스가 필요(객체 생성) -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property><!-- Connection객체 연결 -->
+		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property><!-- 아무튼간데 Mapper로 끝나는 애들,,  -->
+	</bean>
+		
+	<!-- 미리 전송하고 결과를 맵핑하는 객체 생성(클래스 선언) --><!-- 근데 이건 제대로 써도 에러가 뜸, 기본 생성자가 없다는 거임 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>		
+	
+	
+		
+</beans>
