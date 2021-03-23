@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에 사용할 sql이 있는 풀패키지명을 써야한다. 중복되지 않은 이름이면 되는데 통상적으로 이케 씀 -->
+<mapper namespace="com.iu.s3.bankbook.BankBookDAO">
+	<!-- 쿼리문 여기다 씀 ///id는 식별자 Mapper 내에서 중복되지 않도록 할것, 세미클론(;) 찍지 말것 
+	파라미터타입이 ?셋팅인데 중복방지를 위해 풀패키지 작성 getter의 이름 적음-->
+	<insert id="setAdd" parameterType="com.iu.s3.bankbook.BankBookDTO">
+		insert into bankbook (bookname, booknum, rate, sal) values(#{bookName}, bank_seq.nextval, #{rate}, #{sal})
+	</insert>
+	
+	<!-- 
+	<select id="getSelect" parameterType="java.lang.Long" resultType="com.iu.s3.bankbook.BankBookDTO">
+	프리미티브의 레퍼타입,,setter getter잇을지 없을지 모르기 때문에		어디에 담을지 지정이 필요함 그리고 여기서 뱅크북디티오랑 데이터베이스의 이름이 같아야 자동으로 값이 넣어짐
+		select * from bankbook where bookNum=#{num}파라미터로 넘겨준 변수명을 씀
+	</select> 
+	-->
+	<select id="getSelect" parameterType="com.iu.s3.bankbook.BankBookDTO" resultType="com.iu.s3.bankbook.BankBookDTO">
+			select * from bankbook where bookNum=#{bookNum}
+	</select> 
+
+	<select id="getList" resultType="com.iu.s3.bankbook.BankBookDTO">
+	<!-- 결과물이 여러개인데 List에 담을 수 없어 왜냐면 List<bankbookDTO>를 할수가 없으니까 연관이 안되서 안 담기는 거임 이걸 dao에서 처리할거임-->
+		select * from bankbook order by bookNum desc<!-- 파라미터 불필요 -->
+	</select>
+	
+	<delete id="setDelete" parameterType="com.iu.s3.bankbook.BankBookDTO" >
+		delete bankbook where bookNum=#{bookNum}
+	</delete>
+
+	<update id="setUpdate" parameterType="com.iu.s3.bankbook.BankBookDTO">
+		update bankbook set bookName=#{bookName}, rate=#{rate}, sal=#{sal} where booknum=#{bookNum} <!-- 뭐가 들어올지 모르니까 다 수정해버림 -->
+	</update>
+
+</mapper>

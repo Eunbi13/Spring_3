@@ -28,6 +28,6 @@ public class ConnectionTest extends MyAbstractTest{
 	
 	@Test
 	public void sqlTest() throws Exception{
-		assertNotNull(sqlSession);
+		assertNotNull(sqlSession);//우리가 만드는 클래스가 아니고 DB-sql을 쓰는 친구라서 DML같은 언어를 씀 그래서 gettersetter가 없음
 	}
 }
