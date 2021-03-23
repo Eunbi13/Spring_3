@@ -3,13 +3,11 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    <mapper namespace="com.iu.s3.member.memberDAO.">
+    <mapper namespace="com.iu.s3.member.memberDAO">
     <!-- 쿼리문 쓸 곳 -->
     <insert id="memberJoin" parameterType="com.iu.s3.member.memberDTO">
     	insert into member(id, pw, name, phone, email) values (#{id}, #{pw}, #{name}, #{phone}, #{email})
     </insert>
-    
-<!--     <select id=""></select> -->
     
     
     
