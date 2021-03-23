@@ -18,7 +18,7 @@ public class BankBookDAO {
 	@Autowired
 	private SqlSession sqlSession;//sqlSessionTemplet을 상속하는 sqlSession
 	
-	private final String NAMESPACE="com.iu.s3.bankbook.BankBookDAO";//final 상수=>전부 대문자 표기 mapper의 namespace를 적는거임
+	private final String NAMESPACE="com.iu.s3.bankbook.BankBookDAO.";//final 상수=>전부 대문자 표기 mapper의 namespace를 적는거임
 	
 	
 	//getList
