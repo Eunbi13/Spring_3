@@ -14,18 +14,21 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.iu.s3.member.MemberDAO.";
 	
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
-		
-		
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
+		
+	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
+	}
+		
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+	}
 	
+	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
+	}
 	
 
-	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
-		
-		String sql = "SELECT * FROM member WHERE id=? and pw=?";
-		
-		
-		return memberDTO;
-	}
+	
 }
