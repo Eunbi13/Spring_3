@@ -27,21 +27,21 @@ public class BankBookDAO {
 		
 		
 		
-		return sqlSession.selectList(NAMESPACE+".getList");
+		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
 	
 	public BankBookDTO getSelect(BankBookDTO bankBookDTO)throws Exception{
 //		long num = 1L;
-//		bankBookDTO=sqlSession.selectOne(NAMESPACE+".getSelect", num);//파라미터로 num 변수를 넘기겟다.
+//		bankBookDTO=sqlSession.selectOne(NAMESPACE+"getSelect", num);//파라미터로 num 변수를 넘기겟다.
 		
 		
-		return sqlSession.selectOne(NAMESPACE+".getSelect", bankBookDTO);
+		return sqlSession.selectOne(NAMESPACE+"getSelect", bankBookDTO);
 		
 	}
 	
 	public int setAdd(BankBookDTO bankBookDTO) throws Exception {
-		int result = sqlSession.insert(NAMESPACE+".setAdd", bankBookDTO);
+		int result = sqlSession.insert(NAMESPACE+"setAdd", bankBookDTO);
 		//mapper의 id를 적는다.아하 위치 정보,, namespace안에 있는 아이디명, 넘길 파라미터 정보
 		
 		return result;
@@ -49,12 +49,12 @@ public class BankBookDAO {
 	}
 	
 	public int setDelete(BankBookDTO bankBookDTO)throws Exception{
-		return sqlSession.delete(NAMESPACE+".setDelete", bankBookDTO);//int리턴되니까 걍 다이렉트로 넣어버리기
+		return sqlSession.delete(NAMESPACE+"setDelete", bankBookDTO);//int리턴되니까 걍 다이렉트로 넣어버리기
 				
 	}
 	
 	public int setUpdate(BankBookDTO bankBookDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+".setUpdate", bankBookDTO);
+		return sqlSession.update(NAMESPACE+"setUpdate", bankBookDTO);
 	
 		
 	}
