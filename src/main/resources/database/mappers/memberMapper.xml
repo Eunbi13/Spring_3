@@ -9,6 +9,8 @@
     	insert into member(id, pw, name, phone, email) values (#{id}, #{pw}, #{name}, #{phone}, #{email})
     </insert>
     
-    
+    <select id="memberLogin" parameterType="com.iu.s3.member.MemberDTO" resultType="com.iu.s3.member.MemberDTO">
+    	SELECT * FROM member WHERE id=#{id} and pw=#{pw}
+    </select>
     
     </mapper>
