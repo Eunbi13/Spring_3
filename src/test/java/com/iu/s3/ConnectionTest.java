@@ -12,7 +12,7 @@ public class ConnectionTest extends MyAbstractTest{
 	
 	@Autowired
 	private DataSource dataSource;
-	
+	//MemberTEst
 	@Test
 	public void connectionTest() throws Exception {
 		assertNotNull(dataSource.getConnection());
