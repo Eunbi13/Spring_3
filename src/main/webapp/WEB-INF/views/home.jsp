@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<!-- 현재 위치가 root, -->
+<a href="./bankbook/bankbookList"> BankBookList </a>
 </body>
 </html>

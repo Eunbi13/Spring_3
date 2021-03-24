@@ -24,9 +24,7 @@ public class BankBookDAO {
 	//getList
 	//bankbook 테이블의 모든 데이터 조회 후 리턴
 	public List<BankBookDTO> getList() throws Exception{
-		
-		
-		
+	
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
@@ -34,7 +32,6 @@ public class BankBookDAO {
 	public BankBookDTO getSelect(BankBookDTO bankBookDTO)throws Exception{
 //		long num = 1L;
 //		bankBookDTO=sqlSession.selectOne(NAMESPACE+"getSelect", num);//파라미터로 num 변수를 넘기겟다.
-		
 		
 		return sqlSession.selectOne(NAMESPACE+"getSelect", bankBookDTO);
 		
