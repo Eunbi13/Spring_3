@@ -11,6 +11,11 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <!-- 현재 위치가 root, -->
-<a href="./bankbook/bankbookList"> BankBookList </a>
+<a href="./bankbook/bankbookList"> BankBookList </a><br>
+
+<a href="./member/memberJoin">Join</a><br>
+<a href="./member/memberLogin">Login</a>
+
+
 </body>
 </html>
