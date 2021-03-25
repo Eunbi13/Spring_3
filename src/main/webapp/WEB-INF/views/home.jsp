@@ -16,8 +16,8 @@
 <a href="./bankbook/bankbookList"> BankBookList </a><br>
 
 <c:choose>
-	<c:when test="${empty sessionScope.member }">ㅎㅎ</c:when>
-	<c:when test="${not empty sessionScope.member }">ㅋㅋ</c:when>
+	<c:when test="${empty sessionScope.member }"></c:when>
+	<c:when test="${not empty sessionScope.member }"></c:when>
 	<c:otherwise></c:otherwise>
 </c:choose>
 
