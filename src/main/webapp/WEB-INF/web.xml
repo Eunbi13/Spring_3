@@ -19,7 +19,8 @@
 	</filter-mapping>
 
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters 
+	전체에서 사용하는 파람, 루트 root-context 읽음-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -30,7 +31,8 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
+	<!-- Processes application requests 
+	1. 실행되면 얘를 만들고 3. servlet-context 읽음 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -40,7 +42,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+		<!-- 2. / 로 시작되는 모든 것을 appServlet으로 보내라 <<dispatcherServlet임 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

@@ -15,8 +15,51 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	//로그아웃
+	@RequestMapping(value="memberLogout")
+	public String memberLogout(HttpSession session)throws Exception{
+		session.invalidate();//섹션의 유지 시간을 0으로 만들겠다.
+		return "redirect:../";
+	}
+	
+	//마이페이지
+	@RequestMapping(value="memberPage")
+	public String memberPage() throws Exception{//session담을 필요 없었네,, 하긴 쓰지도 않는데 굳이? 
+		return "./member/memberPage";
+				
+	}
 
-
+	//탈퇴
+	@RequestMapping(value="memberDelete")
+	public String memberDelete(HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		int num = memberService.memberDelete(memberDTO);//여기까진 DB를 지운것 session과는 독립적임
+		System.out.println(num+"삭제 완료");
+		session.invalidate();//session 종료, session데이터 삭제
+		
+		return "redirect: ../";
+	}
+	//수정
+	@RequestMapping(value="memberUpdate")
+	public void memberUpdqte()throws Exception{
+		
+	}
+	
+	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
+	public String memberUpdqte(MemberDTO memberDTO,HttpSession session)throws Exception{
+		
+		System.out.println(memberDTO.getPw());
+		int num = memberService.memberUpdate(memberDTO);
+		System.out.println("update"+num);
+		
+		memberDTO = memberService.memberLogin(memberDTO);
+		session.setAttribute("member", memberDTO);
+		return "redirect:../";
+	}
+	
+	
 	@RequestMapping("memberJoin")
 	public void memberJoin()throws Exception{
 		System.out.println("--join");

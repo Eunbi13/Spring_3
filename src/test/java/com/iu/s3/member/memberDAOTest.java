@@ -22,6 +22,7 @@ public class memberDAOTest extends MyAbstractTest {
 		memberDTO.setEmail("today@Tuesday");
 		int result = memberDAO.memberJoin(memberDTO);
 		assertEquals(1, result);
+		
 	}
 
 	//@Test

@@ -18,4 +18,12 @@ public class MemberService {
 		return memberDAO.memberLogin(memberDTO);
 	}
 	
+	//탈퇴
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
+		return memberDAO.memberDelete(memberDTO);
+	}
+	//수정
+	public int memberUpdate(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberUpdate(memberDTO);
+	}
 }
