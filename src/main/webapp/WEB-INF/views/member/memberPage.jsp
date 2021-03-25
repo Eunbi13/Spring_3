@@ -17,6 +17,7 @@
 <h3>email: ${sessionScope.member.email }</h3>
 <a href="./memberDelete">탈퇴</a>
 <a href="./memberUpdate">수정</a>
+<a href="../account/accountList">계좌 관리</a>
 
 
 </body>

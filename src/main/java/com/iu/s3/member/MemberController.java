@@ -19,7 +19,7 @@ public class MemberController {
 	//로그아웃
 	@RequestMapping(value="memberLogout")
 	public String memberLogout(HttpSession session)throws Exception{
-		session.invalidate();//섹션의 유지 시간을 0으로 만들겠다.
+		session.invalidate();//섹션의 유지 시간을 0으로 만들겠다. session id랑 데이터를 null로 바꿔버린거임
 		return "redirect:../";
 	}
 	
@@ -34,7 +34,7 @@ public class MemberController {
 	@RequestMapping(value="memberDelete")
 	public String memberDelete(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		
+		//invalidate하고 session에 담고 싶어도 해당 id가 없는 거 그니까 key가 없어졌다고 생각해도 될듯
 		int num = memberService.memberDelete(memberDTO);//여기까진 DB를 지운것 session과는 독립적임
 		System.out.println(num+"삭제 완료");
 		session.invalidate();//session 종료, session데이터 삭제
@@ -51,11 +51,14 @@ public class MemberController {
 	public String memberUpdqte(MemberDTO memberDTO,HttpSession session)throws Exception{
 		
 		System.out.println(memberDTO.getPw());
-		int num = memberService.memberUpdate(memberDTO);
+		int num = memberService.memberUpdate(memberDTO);//DB업데이트
 		System.out.println("update"+num);
 		
-		memberDTO = memberService.memberLogin(memberDTO);
-		session.setAttribute("member", memberDTO);
+		if(num>0) {
+			
+			memberDTO = memberService.memberLogin(memberDTO);
+			session.setAttribute("member", memberDTO);//session에 같은 이름으로 덮어씌우기
+		}
 		return "redirect:../";
 	}
 	

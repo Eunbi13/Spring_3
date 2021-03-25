@@ -15,6 +15,12 @@
 <!-- 현재 위치가 root, -->
 <a href="./bankbook/bankbookList"> BankBookList </a><br>
 
+<c:choose>
+	<c:when test="${empty sessionScope.member }">ㅎㅎ</c:when>
+	<c:when test="${not empty sessionScope.member }">ㅋㅋ</c:when>
+	<c:otherwise></c:otherwise>
+</c:choose>
+
 <c:if test="${empty sessionScope.member }">
 <a href="./member/memberJoin">Join</a><br>
 <a href="./member/memberLogin">Login</a>
