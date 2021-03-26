@@ -13,7 +13,7 @@
     	</select>
     
     	<insert id="setInsert" parameterType="AccountDTO">
-    		insert into account (id, accountnum, booknum, balance) values(#{id}, #{accountNum}, #{bookNum}, #{balance})
+    		insert into account (id, accountnum, booknum, balance) values(#{id}, #{accountNum}, #{bookNum}, 0)
     	</insert>
     
     	

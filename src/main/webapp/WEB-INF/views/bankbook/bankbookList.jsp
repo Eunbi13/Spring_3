@@ -6,13 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<c:import url="../template/bootStrap.jsp"></c:import>
+
+<title>BankBook</title>
 </head>
 <body>
-<h1>BankBook List</h1>
 
-<table>
-	<thead>
+<c:import url="../template/header.jsp"></c:import>
+
+<div class="container">
+<h2>BankBook List</h2>
+
+<table class="table">
+	<thead class="thead-dark">
 		<tr> 
 			<th>Name</th>
 			<th>Rate</th>
@@ -29,6 +36,6 @@
 	</c:forEach>
 	</tbody>
 </table>
-
+</div>
 </body>
 </html>

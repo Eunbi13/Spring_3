@@ -25,7 +25,7 @@ public class AccountController {
 		AccountDTO accountDTO = new AccountDTO();
 		
 		accountDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
-		
+		//Mapper에서 parameterType을 MemberDTO 하던가 String타입으로 받는거도 괜찮다 
 		
 		List<AccountDTO> ar =accountService.getList(accountDTO);
 		model.addAttribute("accountList", ar);
