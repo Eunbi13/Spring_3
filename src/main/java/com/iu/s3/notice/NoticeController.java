@@ -28,6 +28,7 @@ public class NoticeController {
 	@RequestMapping("noticeSelect")
 	public void getSelect(NoticeDTO noticeDTO, Model model)throws Exception{
 		noticeDTO = noticeService.getSelect(noticeDTO);
+		
 		model.addAttribute("dto", noticeDTO);
 	}
 	//글 쓰기 get----------------------------------------------------------

@@ -38,7 +38,7 @@
 			</tbody>
 		</table>
 		<c:if test="${member.id eq 'admin' }">
-			<a href="./noticeInsert" class="btn btn-dark">Write</a>
+			<a href="./noticeInsert" class="btn btn-dark float-right">Write</a>
 		</c:if>
 	</div>
 	

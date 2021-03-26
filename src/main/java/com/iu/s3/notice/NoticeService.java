@@ -20,19 +20,17 @@ public class NoticeService {
 	}
 	//셀렉트
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception{//num2
-		long num = noticeDTO.getHit();
-			System.out.println(num);
-			noticeDTO.setHit(num+1);//num2기준으로 dto를 꺼내는 그 중  hit+1 을 하고 다시 dto에 집어넣기 
-			System.out.println(num+1);
-		noticeDAO.setHitUpdate(noticeDTO);//업데이트 하고
-		//조회를 해야겠지 업데이트 먼저 하고 조회하면 업데이트 된거까지 오를테니까,, 아니 왜 안오름?? 나중에 고치자,,
+		noticeDTO = noticeDAO.getSelect(noticeDTO);//조회를 하고,, 여기서 숫자를 빼야했어.
+		long num = noticeDTO.getHit()+1;//그럼 여기서 조회된 데이터hit에 +1을 하고 
+		System.out.println(num);
+		noticeDTO.setHit(num);//다시 그 숫자로 데이터hit에 넣고 
+		noticeDAO.setHitUpdate(noticeDTO);//업데이트 하기
+		//그리고 다시 조회,,
 		noticeDTO = noticeDAO.getSelect(noticeDTO);
 		return noticeDTO;
 	}
-	//글 쓰기
+	//글 쓰기-------------------------------------------------------
 	public int setInsert(NoticeDTO noticeDTO)throws Exception{
-		
-		
 		return noticeDAO.setInsert(noticeDTO);
 	}
 	//글수정

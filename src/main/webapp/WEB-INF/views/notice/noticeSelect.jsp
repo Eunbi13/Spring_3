@@ -13,7 +13,7 @@
 
 	<div class="container">
 		<h1>Notice List Page</h1>
-
+		<a href="./noticeList" class="btn btn-dark my-3 ml-2 float-right">List</a>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -32,14 +32,16 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="container-fluid">
-			
-			${dto.contents }
-		</div>
-	<c:if test="${member.id eq 'admin' }">
-		<a href="./noticeUpdate?num=${dto.num }" class="btn btn-dark" >Update</a> <a
-			href="./noticeDelete?num=${dto.num }" class="btn btn-danger" >Delete</a>
-	</c:if>
+		<div class="container-fluid my-4">${dto.contents }</div>
+
+
+		<c:if test="${member.id eq 'admin' }">
+			<a href="./noticeDelete?num=${dto.num }"
+				class="btn btn-danger my-3 ml-2 float-right">Delete</a>
+			<a href="./noticeUpdate?num=${dto.num }"
+				class="btn btn-dark my-3 ml-2 float-right">Update</a>
+		</c:if>
+
 	</div>
 
 

@@ -22,7 +22,7 @@
 				<label for="contents">Contents</label>
 				<textarea class="form-control" id="contents" rows="3" name="contents"></textarea>
 			</div>
-			<button class="btn btn-dark" >write</button>
+			<button class="btn btn-dark float-right" >write</button>
 		</form>
 	</div>
 
