@@ -56,6 +56,54 @@
 </div>
 
 
+<!-- 
+	패키지 : com.iu.s3.notice
+	기능 
+		글 리스트  누구나 접근 가능
+		상세보기  누구나 , 리스트에서 제목 클릭
+		글 쓰기  관리자만 접근 가능
+		글 수정  관리자만 
+		글 삭제  관리자만 
+	back-end
+		NoticeDTO
+		noticeMapper
+		NoticeDAO 
+			getList 글 리스트
+			getSelect 글 상세보기
+			setInsert 글 쓰기
+			setUpdate 글 수정
+			setDelete 글 삭제
+			setHitUpdate 조회수 올라가기 select할 때 호출 서비스에서 호출 //그래서 관련 service필요 x
+		NoticeService
+			getList 글 리스트
+			getSelect 글 상세보기
+			setInsert 글 쓰기
+			setUpdate 글 수정
+			setDelete 글 삭제
+		NoticeController
+			getList 글 리스트
+			getSelect 글 상세보기
+			setInsert 글 쓰기 메서드 두개 
+			setUpdate 글 수정 메서드 두개
+			setDelete 글 삭제
+		
+	front-end
+		/WEB-INF/views/notice/
+		
+		글 리스트 
+		/notice/noticeList		GET		noticeList.jsp 
+		글 상세보기 
+		/notice/noticeSelect	GET		noticeSelect.jsp
+		글 쓰기   
+		/notice/noticeInsert	GET		noticeInsert.jsp
+		/notice/noticeInsert	POST	noticeList.jsp 
+		글 수정   
+		/notice/noticeUpdate 	GET		noticeUpdate.jsp
+		/notice/noticeUpdate	POST	noticeList.jsp 
+		글 삭제
+		/notice/noticDelete		GET		noticeList.jsp
+ -->
+
 
 </body>
 </html>
