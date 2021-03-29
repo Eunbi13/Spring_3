@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.s3.util.Pager;
 
 @Controller
 @RequestMapping(value="/bankbook/**")//bankbook으로 시작하는 모든 요청(하위폴더 포함)은 이 클래스로 받겠다.
@@ -19,10 +22,16 @@ public class BankBookController {
 	
 	//위에 있는 RequestMapping+value
 	@RequestMapping("bankbookList")//속성이 value 하나라면 생략 가능
-	public void getList(Model model) throws Exception {
-		List<BankBookDTO> ar = bankBookService.getList(); 
+	public ModelAndView getList(Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("--startNum: "+pager.getStartNum());
+		List<BankBookDTO> ar = bankBookService.getList(pager); 
 		//jsp경로명, model
-		model.addAttribute("list",ar);//void를 사용함으로서 view는 mapping에 적어둔 링크를 자동으로 따라감 그래서 우리는 modelandview에서 model만 사용하게 됨
+		mv.addObject("list",ar);//void를 사용함으로서 view는 mapping에 적어둔 링크를 자동으로 따라감 그래서 우리는 modelandview에서 model만 사용하게 됨
+		mv.setViewName("bankbook/bankbookList");
+		mv.addObject("pager", pager);
+		System.out.println("startNum--: "+pager.getStartNum());
+		return mv;
 	}
 	
 	@RequestMapping(value = "bankbookSelect", method = RequestMethod.GET)

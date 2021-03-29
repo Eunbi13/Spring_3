@@ -21,10 +21,17 @@
 			select * from bankbook where bookNum=#{bookNum}
 	</select> 
 
-	<select id="getList" resultType="BankBookDTO"><!-- 파라미터 불필요 -->
-	<!-- 결과물이 여러개인데 List에 담을 수 없어 왜냐면 List<bankbookDTO>를 할수가 없으니까 연관이 안되서 안 담기는 거임 이걸 dao에서 처리할거임-->
-		select * from bankbook order by bookNum desc
+	<select id="getList" parameterType="Pager" resultType="BankBookDTO">
+		select * from(
+  		  select rownum R, B.* from
+       		 (select * from bankbook order by booknum desc) B
+  		  ) where R between #{startRow} and #{lastRow}
 	</select>
+	
+	<select id="getTotalCount" resultType="long">
+		select count(booknum) from bankbook
+	</select>
+	
 	
 	<delete id="setDelete" parameterType="BankBookDTO" >
 		delete bankbook where bookNum=#{bookNum}

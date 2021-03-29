@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.member.MemberDTO;
+import com.iu.s3.util.Pager;
 
 @Controller
 @RequestMapping(value="/notice/**")
@@ -19,10 +22,15 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	//리스트
-	@RequestMapping("noticeList")
-	public void getList(Model model)throws Exception{
-		List<NoticeDTO> ar =  noticeService.getList();
-		model.addAttribute("noticeList", ar); 
+	@RequestMapping(value="noticeList")
+	public ModelAndView getList(Pager pager /* @RequestParam(defaultValue = "1") long curPage */)throws Exception{
+	
+		ModelAndView mv = new ModelAndView();
+		List<NoticeDTO> ar =  noticeService.getList(pager);
+		mv.addObject("noticeList", ar); 
+		mv.setViewName("notice/noticeList");
+		mv.addObject("pager", pager);//아 이거 여러개 넣을 수 있구나
+		return mv;
 	}
 	//셀렉트 
 	@RequestMapping("noticeSelect")

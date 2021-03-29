@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iu.s3.member.MemberDTO;
+import com.iu.s3.util.Pager;
 
 @Service
 public class NoticeService {
@@ -15,8 +16,45 @@ public class NoticeService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	//리스트
-	public List<NoticeDTO> getList() throws Exception{
-		return noticeDAO.getList();
+	public List<NoticeDTO> getList(Pager pager) throws Exception{
+		int perPage=10;//한 페이지에 보여줄 글의 개수
+		int perBlock=5;//한 블럭당 보여줄 숫자의 개수
+		//----startRow, lastRow---
+		long startRow=(pager.getCurPage()-1)*perPage+1;
+		long lastRow=pager.getCurPage()*perPage;
+		
+		pager.setStartRow(startRow);
+		pager.setLastRow(lastRow);
+		//----
+		//1 totalCount구해오기
+		long totalCount=noticeDAO.getTotalCount();
+		//2. totalPage 구하기
+		long totalPage=	totalCount/perPage;
+		if(totalCount%perPage !=0) {
+			totalPage++;
+		}
+		//3. totalBlock계산
+		long totalBlock = totalPage/perBlock;
+		if(totalPage%perBlock!=0) {
+			totalBlock++;
+		}
+		//4. curBlock 계산
+		long curBlock=pager.getCurPage()/perBlock;
+		if(pager.getCurPage()%perBlock !=0) {
+			curBlock++;
+		}
+		//5. startNum, lastNum
+		long startNum = (curBlock-1)*perBlock+1;
+		long lastNum= curBlock*perBlock;
+		
+		
+		pager.setStartNum(startNum);
+		pager.setLastNum(lastNum);
+				
+		System.out.println("totalPage"+totalPage);
+		System.out.println("totalBlock"+totalBlock);
+		System.out.println("curBlock"+curBlock);
+		return noticeDAO.getList(pager);
 	}
 	//셀렉트
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception{//num2

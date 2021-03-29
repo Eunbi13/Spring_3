@@ -8,38 +8,47 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s3.MyAbstractTest;
+import com.iu.s3.util.Pager;
 
 public class BankBookDAOTest extends MyAbstractTest{
-	
+
 	@Autowired
 	private BankBookDAO bankBookDAO;
-	
-	//@Test
+
+	@Test
 	public void setAdd() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookName("test");
-		bankBookDTO.setRate(3.22);
-		bankBookDTO.setSal("Y");
-		int result = bankBookDAO.setAdd(bankBookDTO);
-		assertEquals(1, result);//희망하는 숫자, 진짜 나올 결과
+		for(int i = 0; i<200; i++) {
+			bankBookDTO.setBookName("BookName"+i);
+			bankBookDTO.setRate(0.12);
+			bankBookDTO.setSal("Y");
+			int result = bankBookDAO.setAdd(bankBookDTO);
+			if(i%10==0) {
+				Thread.sleep(500);
+			}
+		}
+		System.out.println("fin");
+		//assertEquals(1, result);//희망하는 숫자, 진짜 나올 결과
 	}
-	
+
 	//@Test
 	public void getSelect() throws Exception{
-		
+
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		bankBookDTO.setBookNum(1);
 		bankBookDTO=bankBookDAO.getSelect(bankBookDTO);//1번으로 조회하게 되어있으니까
 		assertNotNull(bankBookDTO);//단정문,, 단언문,,
 	}
-	
+
 	//@Test
 	public void getList() throws Exception{
-		List<BankBookDTO> ar =bankBookDAO.getList();
+		Pager pager = new Pager();
+		pager.setCurPage(1);
+		List<BankBookDTO> ar =bankBookDAO.getList(pager);
 		assertNotEquals(0, ar.size());
-		
+
 	}
-	
+
 	//@Test
 	public void getDelete() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
@@ -47,7 +56,7 @@ public class BankBookDAOTest extends MyAbstractTest{
 		int result = bankBookDAO.setDelete(bankBookDTO);
 		assertEquals(1, result);
 	}
-	@Test
+	//@Test
 	public void setUpdate() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		bankBookDTO.setBookNum(5);
@@ -58,6 +67,6 @@ public class BankBookDAOTest extends MyAbstractTest{
 		bankBookDTO.setSal("Y");
 		int result = bankBookDAO.setUpdate(bankBookDTO);
 		assertEquals(1, result);
-		
+
 	}
 }
