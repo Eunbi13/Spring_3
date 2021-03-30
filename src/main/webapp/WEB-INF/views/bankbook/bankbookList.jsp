@@ -39,14 +39,40 @@
 </div>
 <div class="container">
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+		<c:if test="${pager.pre }">
+			<li class="page-item"><a class="page-link" 
+			href="./bankbookList?curPage=${pager.startNum-1 }&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
+			</c:if>
+			
 			
 			<c:forEach begin="${pager.startNum }" end="${pager.lastNum }" var="i">
-				<li class="page-item"><a class="page-link" href="./bankbookList?curPage=${i}">${i}</a></li>
+				<li class="page-item"><a class="page-link" href="./bankbookList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			</c:forEach> 
-			
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			<c:if test="${pager.next }">
+			<li class="page-item"><a class="page-link" 
+			href="./bankbookList?curPage=${pager.lastNum +1 }&kind=${pager.kind}&search=${pager.search}">Next</a></li>
+			</c:if>
 		</ul>
+	</div>
+	
+	<div class="container">
+
+		<div class="input-group mt-3 mb-3">
+			<form action="./noticeList" class="form-inline">
+				<div class="input-group-prepend">
+					<select class="form-control" id="sel1" name="kind">
+						<option>BookNum</option>
+						<option>BookName</option>
+						<option>Sal</option>
+					</select>
+				</div>
+				<input type="text" class="form-control" placeholder="Search" name="search">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="submit">Search</button>
+				</div>
+			</form>
+		</div>
+
 	</div>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class BankBookService {
 		pager.setStartRow(startRow);
 		pager.setLastRow(lastRow);
 		//1 totalCount구해오기
-		long totalCount =bankBookDAO.getTotalCount();
+		long totalCount =bankBookDAO.getTotalCount(pager);
 		//2. totalPage 구하기
 		long totalPage = totalCount/perPage;
 		if(totalCount%perPage !=0) {
@@ -42,6 +42,18 @@ public class BankBookService {
 		//5. startNum, lastNum
 		long startNum=(curBlock-1)*perBlock+1;
 		long lastNum=curBlock*perBlock;
+		
+		//6. curBlock이 마지막 Block일때 (totalBlock일떄
+		if(curBlock==totalBlock) {
+			lastNum=totalPage;
+		}
+		//7. 이전 다음 block의 존재여부 블리언 타입이고 자동으로 false초기화
+		if(curBlock!=1) {
+			pager.setPre(true);
+		}
+		if(curBlock!=totalBlock) {
+			pager.setNext(true);
+		}
 		
 		pager.setStartNum(startNum);
 		pager.setLastNum(lastNum);

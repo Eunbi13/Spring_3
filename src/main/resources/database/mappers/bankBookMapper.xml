@@ -24,12 +24,24 @@
 	<select id="getList" parameterType="Pager" resultType="BankBookDTO">
 		select * from(
   		  select rownum R, B.* from
-       		 (select * from bankbook order by booknum desc) B
+       		 (select * from bankbook where 
+       		 	<choose>
+       				 <when test="kind=='sal'">sal</when>
+       				 <when test="kind=='bookName'">bookName</when>
+       				 <otherwise>bookNum</otherwise>
+       			 </choose>
+       		 like '%'||#{search}||'%' order by booknum desc) B
   		  ) where R between #{startRow} and #{lastRow}
 	</select>
 	
-	<select id="getTotalCount" resultType="long">
-		select count(booknum) from bankbook
+	<select id="getTotalCount" parameterType="Pager" resultType="long">
+		select count(booknum) from bankbook where 
+       		 	<choose>
+       				 <when test="kind=='sal'">sal</when>
+       				 <when test="kind=='bookName'">bookName</when>
+       				 <otherwise>bookNum</otherwise>
+       			 </choose>
+       		 like '%'||#{search}||'%' order by booknum desc
 	</select>
 	
 	
