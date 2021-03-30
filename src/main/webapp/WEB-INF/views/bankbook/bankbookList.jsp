@@ -58,7 +58,7 @@
 	<div class="container">
 
 		<div class="input-group mt-3 mb-3">
-			<form action="./noticeList" class="form-inline">
+			<form action="./bankbookList" class="form-inline">
 				<div class="input-group-prepend">
 					<select class="form-control" id="sel1" name="kind">
 						<option>BookNum</option>

@@ -7,6 +7,9 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <c:import url="./template/bootStrap.jsp"></c:import>
+<link rel="stylesheet" href="./resources/css/test.css">
+
+
 <title>Home!</title>
 </head>
 <body>
@@ -42,13 +45,17 @@
     <div class="col-sm-8">
       <h2>TITLE HEADING</h2>
       <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
+      <div class="fakeimg">
+      <img alt="cute" src="./resources/images/cute.PNG">
+      </div>
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       <br>
       <h2>TITLE HEADING</h2>
       <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
+      <div class="fakeimg">
+      	<img alt="정여민" src="./resources/images/8934999527_t16.jpg">
+      </div>
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
@@ -103,7 +110,7 @@
 		글 삭제
 		/notice/noticDelete		GET		noticeList.jsp
  -->
-
+<script type="text/javascript" src="./resources/js/test.js"></script>
 
 </body>
 </html>

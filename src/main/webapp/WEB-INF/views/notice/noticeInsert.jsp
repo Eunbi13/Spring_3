@@ -13,7 +13,10 @@
 	<div class="container">
 		<h1>Notice Insert Page</h1>
 		<form action="./noticeInsert" method="post">
-		<input hidden="hidden" name="writer" value="${member.id }">
+			<div class="form-group">
+				<label for="writer">writer</label> <input type="text"
+					class="form-control" readonly="readonly" id="writer" placeholder="writer" name="writer">
+			</div>
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text"
 					class="form-control" id="title" placeholder="Title" name="title">

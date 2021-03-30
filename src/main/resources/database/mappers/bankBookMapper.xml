@@ -26,9 +26,9 @@
   		  select rownum R, B.* from
        		 (select * from bankbook where 
        		 	<choose>
-       				 <when test="kind=='sal'">sal</when>
-       				 <when test="kind=='bookName'">bookName</when>
-       				 <otherwise>bookNum</otherwise>
+       				 <when test="kind=='Sal'">Sal</when>
+       				 <when test="kind=='BookName'">BookName</when>
+       				 <otherwise>BookNum</otherwise>
        			 </choose>
        		 like '%'||#{search}||'%' order by booknum desc) B
   		  ) where R between #{startRow} and #{lastRow}
