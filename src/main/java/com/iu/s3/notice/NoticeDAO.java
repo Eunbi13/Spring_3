@@ -19,8 +19,8 @@ public class NoticeDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
-	public long getTotalCount()throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	public long getTotalCount(Pager pager)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	//셀렉트

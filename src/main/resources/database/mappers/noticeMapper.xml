@@ -5,17 +5,33 @@
 
 <mapper namespace="com.iu.s3.notice.NoticeDAO">
 
-	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
+	<select id="getList" parameterType="Pager"
+		resultType="NoticeDTO">
 		select * from
 			(select rownum R, N.* from
-				(select * from notice order by num desc) N)
-		where R between #{startRow} and #{lastRow}
+				(select * from notice where
+					<!-- 컬럼명을 #{kind}이걸로 받아올 수 없다 함,, 그래서 동적sql로 쓸거라 함 -->
+					<choose>
+						<when test="kind=='writer'"> writer</when>
+						<when test="kind=='contents'">contents</when>
+						<otherwise>title</otherwise>
+					</choose>
+				<!-- 연결 연산자 인덱스에 pk가 자동 저장 검색을 더 빠르게 하려고 num>0 -->
+				like '%'||#{search}||'%' and num>0 order by num desc) N)
+			where R
+		between #{startRow} and #{lastRow}
 	</select>
-	
-	<select id="getTotalCount"  resultType="long"><!-- java.lang.Long -->
-		select count(num)from notice
+
+	<select id="getTotalCount" parameterType="Pager" resultType="long"><!-- java.lang.Long -->
+		select count(num)from notice where
+		<choose>
+			<when test="kind=='writer'"> writer</when>
+			<when test="kind=='contents'">contents</when>
+			<otherwise>title</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num>0 order by num desc
 	</select>
-	
+
 
 	<select id="getSelect" parameterType="NoticeDTO"
 		resultType="NoticeDTO">

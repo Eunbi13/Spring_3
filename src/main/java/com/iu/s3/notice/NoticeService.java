@@ -27,13 +27,13 @@ public class NoticeService {
 		pager.setLastRow(lastRow);
 		//----
 		//1 totalCount구해오기
-		long totalCount=noticeDAO.getTotalCount();
-		//2. totalPage 구하기
+		long totalCount=noticeDAO.getTotalCount(pager);
+		//2. totalPage 구하기 (마지막 번호
 		long totalPage=	totalCount/perPage;
 		if(totalCount%perPage !=0) {
 			totalPage++;
 		}
-		//3. totalBlock계산
+		//3. totalBlock계산 (블록수 
 		long totalBlock = totalPage/perBlock;
 		if(totalPage%perBlock!=0) {
 			totalBlock++;
@@ -48,9 +48,23 @@ public class NoticeService {
 		long lastNum= curBlock*perBlock;
 		
 		
+		//6. curBlock이 마지막 Block일때 (totalBlock일떄
+		if(curBlock==totalBlock) {
+			lastNum=totalPage;
+		}
+		
+		//7. 이전 다음 block의 존재여부
+		if(curBlock!=1) {
+			pager.setPre(true);
+		}
+		if(curBlock!=totalBlock) {
+			pager.setNext(true);
+		}
+		
+		
 		pager.setStartNum(startNum);
 		pager.setLastNum(lastNum);
-				
+		
 		System.out.println("totalPage"+totalPage);
 		System.out.println("totalBlock"+totalBlock);
 		System.out.println("curBlock"+curBlock);
