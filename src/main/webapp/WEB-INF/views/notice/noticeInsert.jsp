@@ -20,12 +20,12 @@
 			
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text"
-					class="form-control" id="title" placeholder="Title" name="title">
+					class="form-control exist" id="title" placeholder="Title" name="title">
 			</div><!-- 비어있음 x -->
 			
 			<div class="form-group">
 				<label for="contents">Contents</label>
-				<textarea class="form-control" id="contents" rows="3" name="contents"></textarea>
+				<textarea class="form-control exist" id="contents" rows="3" name="contents"></textarea>
 			</div> <!-- 비어잇음 x -->
 			
 			<button class="btn btn-dark float-right" onclick="insertCheck()">Subject</button>

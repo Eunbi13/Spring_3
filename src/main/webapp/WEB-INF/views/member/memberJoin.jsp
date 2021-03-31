@@ -30,25 +30,25 @@
 			
 			<div class="form-group">
 				<label for="email">Email:</label> <input type="email"
-					class="form-control" placeholder="Enter email" id="email" name="email">
+					class="form-control exist" placeholder="Enter email" id="email" name="email">
 			</div> <!-- 비어잇음 x -->
 			
 			<div class="form-group">
 				<label for="name">Name:</label> <input type="text"
-					class="form-control" placeholder="Enter name" id="name" name="name">
+					class="form-control exist" placeholder="Enter name" id="name" name="name">
 			</div> <!-- 비어잇음 x -->
 			
 			<div class="form-group">
 				<label for="phone">Phone:</label> <input type="text"
-					class="form-control" placeholder="Enter phone" id="phone" name="phone">
+					class="form-control exist" placeholder="Enter phone" id="phone" name="phone">
 			</div> <!-- 비어잇음 x -->
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<input type="button" value="join" class="btn btn-primary" onclick="">
+			<input type="button" value="join" class="btn btn-primary" onclick="memberJoin()">
 		</form>
+	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 
 	</div>
-	
 	
 </body>
 </html>
