@@ -44,7 +44,7 @@
 			</div> <!-- 비어잇음 x -->
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<input type="button" value="join" class="btn btn-primary">
+			<input type="button" value="join" class="btn btn-primary" onclick="">
 		</form>
 
 	</div>
