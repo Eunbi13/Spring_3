@@ -62,6 +62,10 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
+	@RequestMapping("memberJoinCheck")
+	public void memberJoinCheck() throws Exception{
+		
+	}
 	
 	@RequestMapping("memberJoin")
 	public void memberJoin()throws Exception{

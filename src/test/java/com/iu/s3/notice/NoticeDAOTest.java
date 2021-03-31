@@ -14,11 +14,11 @@ public class NoticeDAOTest extends MyAbstractTest{
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
-	public void getTotalTest() throws Exception{
-		long num = noticeDAO.getTotalCount();
-		assertNotNull(num);
-	}
+//	@Test
+//	public void getTotalTest() throws Exception{
+//		long num = noticeDAO.getTotalCount();
+//		assertNotNull(num);
+//	}
 	
 //	//@Test
 //	public void getListTest()throws Exception{

@@ -16,7 +16,7 @@
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath }/member/memberLogin">Login</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath }/member/memberJoin">Join</a></li>
+				href="${pageContext.request.contextPath }/member/memberJoinCheck">Join</a></li>
 		</c:if>
 		<c:if test="${not empty member }">
 			<li class="nav-item"><a class="nav-link"
