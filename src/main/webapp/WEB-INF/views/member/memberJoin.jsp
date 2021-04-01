@@ -23,25 +23,25 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<h1>memberJoin page</h1>
-	<h1>v9</h1>
+	<h1>v2</h1>
 	<div class="container">
 		<form id="frm" action="./memberJoin" method="post">
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text"
 					class="form-control" placeholder="Enter id" id="id" name="id">
-					<h4 id="idResult"></h4>
+					<h6 id="idResult"></h6>
 			</div> <!-- id는 6글자 이상 아이디에서 블러 이벤트,,6글자 미만이면 <h4>사이에 6글자 미만입니다 출력-->
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
 					class="form-control" placeholder="Enter password" id="pw" name="pw">
-					<h4 id="pwResult"></h4>
+					<h6 id="pwResult"></h6>
 			</div> <!-- pw는 8글자 이상 -->
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
-					class="form-control" placeholder="Enter password" id="pw2" name="pw">
-					<h4 id="pw2Result"></h4>
+					class="form-control" placeholder="Enter password" id="pw2" name="pw2">
+					<h6 id="pw2Result"></h6>
 			</div> <!-- 비번 확인용, 일치하는지 -->
 			
 			<div class="form-group">
