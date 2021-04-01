@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="jumbotron">
-			<h1>약관1ss</h1>
+			<h1>약관1d</h1>
 		</div>
 
 
@@ -64,7 +64,7 @@
 			<h1>약관4</h1>
 		</div>
 
-	<button onclick="check()" class="btn btn-dark">Join</button>
+	<button  class="btn btn-dark">Join</button>
 <script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
 
 

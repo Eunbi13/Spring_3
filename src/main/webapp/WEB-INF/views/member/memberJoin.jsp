@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+
+<style type="text/css">
+	.r1{
+		color: red;
+	}
+	.r2{
+		color: blue;
+	}
+
+</style>
+
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,7 +28,8 @@
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text"
 					class="form-control" placeholder="Enter id" id="id" name="id">
-			</div> <!-- id는 6글자 이상 -->
+					<h4 id="idResult"></h4>
+			</div> <!-- id는 6글자 이상 아이디에서 블러 이벤트,,6글자 미만이면 <h4>사이에 6글자 미만입니다 출력-->
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
@@ -44,7 +57,7 @@
 			</div> <!-- 비어잇음 x -->
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<input type="button" value="join" class="btn btn-primary" onclick="memberJoin()">
+			<button type="submit" onclick="memberJoin()">Join</button>
 		</form>
 	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 

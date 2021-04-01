@@ -1,19 +1,38 @@
 /**
  * 
  */
+	let id = document.getElementById('id');
+	let pw = document.getElementById('pw');
+	let pw2 = document.getElementById('pw2');
+
+	id.addEventListener('focus', function(){
+		console.log("hi")
+	});
+	
+	id.addEventListener("blur", function(){
+
+		let message = "6글자 미만입니다.";
+		console.log(id.value.length);
+		if(id.value.length>5){
+			message="6글자 이상입니다."
+		};
+		let idResult = document.getElementById("idResult");
+		idResult.innerHTML=message;
+	});
 
 function memberJoin(){
 	
 	alert("memberJoin")
 	
-	let id = document.getElementById('id');
-	let pw = document.getElementById('pw');
-	let pw2 = document.getElementById('pw2');
 	
 	if(id.value==""){
-		alert("아이디를 입력하세요")
+		alert("6글자 아이디를 입력하세요")
+		
+		
 	}
-	
+	if(pw.value==""){
+		alert("8글자 비밀번호를 입력하세요")
+	}
 	if(pw.value != pw2.value){
 		alert("비밀번호가 일치하지 않습니다.")
 	}

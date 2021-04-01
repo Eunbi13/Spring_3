@@ -7,7 +7,7 @@
 
 	
 	const all = document.getElementById('all');
-	let check = document.getElementsByClassName('check');
+	let check = document.getElementsByClassName("check");
 	
 	
 	all.addEventListener("click", function(){
@@ -17,13 +17,7 @@
 		}
 		
 	});
-	
-/*	for(let one of check){
-		one.addEventListener("click", function(){
-			//alert("check");
-		});
-	}*/
-	
+
 	
 	
 	for(let ch of check){
@@ -32,11 +26,11 @@
 			let result = true;
 			for(let c of check){
 				if(!c.checked){
-					result=false;
+					result = false;
 					break;
 				}
 			}
-			all.checkd = result;		
+			all.checked = result;		
 		});
 		
 	}
