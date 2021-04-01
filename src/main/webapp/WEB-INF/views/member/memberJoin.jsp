@@ -23,9 +23,9 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<h1>memberJoin page</h1>
-	<h1>v4</h1>
+	<h1>v9</h1>
 	<div class="container">
-		<form action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post">
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text"
 					class="form-control" placeholder="Enter id" id="id" name="id">
@@ -35,11 +35,13 @@
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
 					class="form-control" placeholder="Enter password" id="pw" name="pw">
+					<h4 id="pwResult"></h4>
 			</div> <!-- pw는 8글자 이상 -->
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
 					class="form-control" placeholder="Enter password" id="pw2" name="pw">
+					<h4 id="pw2Result"></h4>
 			</div> <!-- 비번 확인용, 일치하는지 -->
 			
 			<div class="form-group">
@@ -57,8 +59,7 @@
 					class="form-control exist" placeholder="Enter phone" id="phone" name="phone">
 			</div> <!-- 비어잇음 x -->
 			
-			<button type="submit" class="btn btn-primary">Submit</button>
-			<button type="submit" class="btn btn-primary" onclick="memberJoin()">Join</button>
+			<input type="button" value="Join" id="btn" class="btn btn-primary" >
 		</form>
 
 	</div>

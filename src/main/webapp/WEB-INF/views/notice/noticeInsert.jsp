@@ -12,10 +12,11 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 		<h1>Notice Insert Page</h1>
-		<form action="./noticeInsert" method="post">
+		<h1>v6</h1>
+		<form id="frm" action="./noticeInsert" method="post" >
 			<div class="form-group">
 				<label for="writer">writer</label> <input type="text"
-					class="form-control" readonly="readonly" id="writer" placeholder="writer" name="writer">
+					class="form-control" readonly="readonly" id="writer" value="writer" name="writer">
 			</div>
 			
 			<div class="form-group">
@@ -28,8 +29,8 @@
 				<textarea class="form-control exist" id="contents" rows="3" name="contents"></textarea>
 			</div> <!-- 비어잇음 x -->
 			
-			<button class="btn btn-dark float-right" onclick="insertCheck()">Subject</button>
-			<input type="button" value="write" class="btn btn-dark float-right" onclick="insertCheck()">
+			<button class="btn btn-dark float-right" >Subject</button>
+			<input type="button" id="btn" value="write" class="btn btn-dark float-right" >
 		</form>
 	</div>
 			<script type="text/javascript" src="../resources/js/insertCheck.js"></script>
