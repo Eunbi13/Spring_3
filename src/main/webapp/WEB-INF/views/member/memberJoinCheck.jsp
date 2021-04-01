@@ -24,18 +24,18 @@
 
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				class="form-check-input one" value="" name="c1" >동의
+				class="form-check-input check" value="" name="c1" >동의
 			</label>
 		</div>
 
 		<div class="jumbotron">
-			<h1>약관1</h1>
+			<h1>약관1ss</h1>
 		</div>
 
 
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				class="form-check-input one" value="" name="c1" >동의
+				class="form-check-input check" value="" name="c1" >동의
 			</label>
 		</div>
 
@@ -46,12 +46,22 @@
 
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
-				class="form-check-input one" value="" name="c1" >동의
+				class="form-check-input check" value="" name="c1" >동의
 			</label>
 		</div>
 
 		<div class="jumbotron">
 			<h1>약관3</h1>
+		</div>
+		
+		<div class="form-check">
+			<label class="form-check-label"> <input type="checkbox"
+				class="form-check-input check" value="" name="c1" >동의
+			</label>
+		</div>
+
+		<div class="jumbotron">
+			<h1>약관4</h1>
 		</div>
 
 	<button onclick="check()" class="btn btn-dark">Join</button>

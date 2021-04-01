@@ -9,108 +9,42 @@
 <c:import url="./template/bootStrap.jsp"></c:import>
 <link rel="stylesheet" href="./resources/css/test.css">
 
+	
 
 <title>Home!</title>
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
 
-
+	<button onclick="go()" >Button</button>
+	<button id="btn">Click</button>
+	<button id="btn2">Click</button>
+	<h1>version 8</h1>
 	
-<div class="container" style="margin-top:30px">
-  <div class="row">
-    <div class="col-sm-4">
-      <h2>About Me</h2>
-      <h5>Photo of me:</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3>Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <hr class="d-sm-none">
-    </div>
-    <div class="col-sm-8">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg">
-      <img alt="cute" src="./resources/images/cute.PNG">
-      </div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <br>
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg">
-      	<img alt="정여민" src="./resources/images/8934999527_t16.jpg">
-      </div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- 
-	패키지 : com.iu.s3.notice
-	기능 
-		글 리스트  누구나 접근 가능
-		상세보기  누구나 , 리스트에서 제목 클릭
-		글 쓰기  관리자만 접근 가능
-		글 수정  관리자만 
-		글 삭제  관리자만 
-	back-end
-		NoticeDTO
-		noticeMapper
-		NoticeDAO 
-			getList 글 리스트
-			getSelect 글 상세보기
-			setInsert 글 쓰기
-			setUpdate 글 수정
-			setDelete 글 삭제
-			setHitUpdate 조회수 올라가기 select할 때 호출 서비스에서 호출 //그래서 관련 service필요 x
-		NoticeService
-			getList 글 리스트
-			getSelect 글 상세보기
-			setInsert 글 쓰기
-			setUpdate 글 수정
-			setDelete 글 삭제
-		NoticeController
-			getList 글 리스트
-			getSelect 글 상세보기
-			setInsert 글 쓰기 메서드 두개 
-			setUpdate 글 수정 메서드 두개
-			setDelete 글 삭제
+	<script type="text/javascript">
+	let btn = document.getElementById("btn");
+	let btn2 = document.getElementById("btn2");
+	
+	//onclick은 이벤트 명이 아님 on 하고 오는 이름(click)이 이벤트 명
+	//btn2.addEventListener('click', go)
+	btn2.addEventListener('click', function() {
+		alert("btn2");
+		go();
+	});//익명함수라는게,,, 이렇게까지 오는 함수였다니,,!
+	
+	//btn.onclick = go()하면은 이벤트가 미리 실행
+	//btn.onclick = go;//밖에서 할때는 이렇게
+	btn.onclick = function(){
+		alert("익명함수");
+		go();//다른 함수 안에서 할때는 이렇게
+	}
+	
+	
+	function go(){
+		alert("hello");
+	}
+	
 		
-	front-end
-		/WEB-INF/views/notice/
-		
-		글 리스트 
-		/notice/noticeList		GET		noticeList.jsp 
-		글 상세보기 
-		/notice/noticeSelect	GET		noticeSelect.jsp
-		글 쓰기   
-		/notice/noticeInsert	GET		noticeInsert.jsp
-		/notice/noticeInsert	POST	noticeList.jsp 
-		글 수정   
-		/notice/noticeUpdate 	GET		noticeUpdate.jsp
-		/notice/noticeUpdate	POST	noticeList.jsp 
-		글 삭제
-		/notice/noticDelete		GET		noticeList.jsp
- -->
-<script type="text/javascript" src="./resources/js/test.js"></script>
-
+	</script>
 </body>
 </html>

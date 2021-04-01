@@ -5,27 +5,56 @@
  */
 
 
-function check(){
-	alert("check");
 	
-	let all = document.getElementById("all");
-	let ones = document.getElementsByClassName("one");
+	const all = document.getElementById('all');
+	let check = document.getElementsByClassName('check');
 	
-	console.log(all.checked);
+	
+	all.addEventListener("click", function(){
+		//alert("click")
+		for(let ch of check){
+			ch.checked = all.checked;
+		}
+		
+	});
+	
+/*	for(let one of check){
+		one.addEventListener("click", function(){
+			//alert("check");
+		});
+	}*/
+	
+	
+	
+	for(let ch of check){
+		ch.addEventListener("click", function(){
+			
+			let result = true;
+			for(let c of check){
+				if(!c.checked){
+					result=false;
+					break;
+				}
+			}
+			all.checkd = result;		
+		});
+		
+	}
+	
 	
 		/*for(let one of ones){
 			one.checked = all.checked
 		}
 		*/
-		for(let one of ones){
-			all.checked=one.checked;
-
-			if(!one.checked){
-				break;
-			}
+	/*let result = true;
+		
+	for(one of check){
+		if(!one.checked){
+			result = false;
+			break;
 		}
+	}
+*/
+	
+	
 
-	
-	
-	
-}
