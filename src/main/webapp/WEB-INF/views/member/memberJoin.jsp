@@ -23,6 +23,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<h1>memberJoin page</h1>
+	<h1>v4</h1>
 	<div class="container">
 		<form action="./memberJoin" method="post">
 			<div class="form-group">
@@ -57,11 +58,11 @@
 			</div> <!-- 비어잇음 x -->
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<button type="submit" onclick="memberJoin()">Join</button>
+			<button type="submit" class="btn btn-primary" onclick="memberJoin()">Join</button>
 		</form>
-	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 
 	</div>
+	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 	
 </body>
 </html>
