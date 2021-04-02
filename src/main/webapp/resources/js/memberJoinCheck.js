@@ -8,7 +8,7 @@
 	
 	const all = document.getElementById('all');
 	let check = document.getElementsByClassName("check");
-	
+	const btn = document.getElementById('btn');
 	
 	all.addEventListener("click", function(){
 		//alert("click")
@@ -17,8 +17,6 @@
 		}
 		
 	});
-
-	
 	
 	for(let ch of check){
 		ch.addEventListener("click", function(){
@@ -35,20 +33,12 @@
 		
 	}
 	
-	
-		/*for(let one of ones){
-			one.checked = all.checked
+	/////////다 동의 했다면 입력폼 가야함
+	btn.addEventListener("click", function(){
+		if(all.checked){
+			location.href="./memberJoin";//get
+		}else{
+			alert("약관동의는 필수입니다.")
 		}
-		*/
-	/*let result = true;
-		
-	for(one of check){
-		if(!one.checked){
-			result = false;
-			break;
-		}
-	}
-*/
-	
-	
+	});
 

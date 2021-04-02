@@ -8,6 +8,7 @@
 	let exist = document.getElementsByClassName('exist');//phone, name, email 클래스로 묶은 거 
 	let idCheck = false;
 	let pwCheck  = false;
+	let pw2Check  = false;
 	let existCheck = true;//공백 아닌것을 디폴트로 봄
 	let message="";
 	let css="";
@@ -24,7 +25,10 @@
 			message="6글자 이상입니다."
 			css = "r2";
 			idCheck=true;//6글자 이상이면 트루
-		};
+		}else{
+			idCheck=false;
+		}
+		
 		let idResult = document.getElementById("idResult");
 		idResult.innerHTML=message;
 		idResult.setAttribute("class", css);
@@ -38,10 +42,10 @@
 			message="8글자 이상입니다.";
 			css="r2";
 			pwCheck=true;//7글자 넘으면 트루
+		}else{
+			idCheck=false;
 		}
-		if(pw.value != pw2.value){
-			pwCheck=false;//만약에 pw2를 아예 건들지 않았을 경우를 위해서 여기다 넣는 것
-		}
+		     
 		let pwResult = document.getElementById("pwResult");
 		pwResult.innerHTML=message;
 		pwResult.setAttribute("class", css);
@@ -58,6 +62,8 @@
 		if(pw.value != pw2.value){
 			message="일치하지 않습니다.";
 			css="r1";
+		}else{
+			pw2Check=true;
 		}
 		let pw2Result = document.getElementById("pw2Result");
 		pw2Result.innerHTML=message;
@@ -76,20 +82,16 @@
 		}
 		console.log(idCheck);
 		console.log(pwCheck);
+		console.log(pw2Check);
 		console.log(existCheck);
 		
 	//조건이 만족한다면 form 태그에 sumit이 들어잇으니까,,,, 실행시키고 싶다.
-		if(idCheck&&pwCheck&&existCheck){
+		if(idCheck&&pwCheck&&pw2Check&&existCheck){
 			alert("pass")
 			//frm.submit();
 		}else{
 			alert("nonop")
-			id.value="";
-			pw.value="";
-			pw2.value="";
-			for(has of exist){
-				has.value="";
-			}
+			
 		}
 	});
 

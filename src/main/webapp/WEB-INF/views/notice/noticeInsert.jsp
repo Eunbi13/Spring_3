@@ -29,7 +29,7 @@
 				<textarea class="form-control exist" id="contents" rows="3" name="contents"></textarea>
 			</div> <!-- 비어잇음 x -->
 			
-			<button class="btn btn-dark float-right" >Subject</button>
+		
 			<input type="button" id="btn" value="write" class="btn btn-dark float-right" >
 		</form>
 	</div>

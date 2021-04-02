@@ -46,11 +46,19 @@ public class NoticeController {
 	}
 	//글쓰기 post
 	@RequestMapping(value="noticeInsert", method = RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO, HttpSession session)throws Exception{
+	public String setInsert(NoticeDTO noticeDTO, HttpSession session, Model model)throws Exception{
 		noticeDTO.setWriter(((MemberDTO)session.getAttribute("member")).getId());
 		System.out.println("글쓰는 id: "+((MemberDTO)session.getAttribute("member")));
-		noticeService.setInsert(noticeDTO);
-		return "redirect:./noticeList";
+		int result = noticeService.setInsert(noticeDTO);
+		String message = "잘 못 입력하셨습니다.";
+		String path = "./noticeInsert";
+		if(result>0) {
+			message = "글이 정상적으로 등록 되었습니다.";
+			path = "./noticeList";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		return "common/commonResult";
 	}
 	//글 수정get
 	@RequestMapping("noticeUpdate")

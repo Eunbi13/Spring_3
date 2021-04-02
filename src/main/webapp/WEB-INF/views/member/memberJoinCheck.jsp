@@ -14,7 +14,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
-		<h1>MemberJoin Check Page</h1>
+		<h1>MemberJoin Check Page 2</h1>
 		
 		<div class="form-check">
 			<label class="form-check-label"> <input type="checkbox"
@@ -64,7 +64,7 @@
 			<h1>약관4</h1>
 		</div>
 
-	<button  class="btn btn-dark">Join</button>
+	<button  class="btn btn-dark"  id="btn">Join</button>
 <script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
 
 

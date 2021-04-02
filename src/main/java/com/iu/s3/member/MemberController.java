@@ -1,5 +1,7 @@
 package com.iu.s3.member;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,13 +76,22 @@ public class MemberController {
 
 
 	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO) throws Exception{
+	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception{
 		System.out.println("join --");
-		int result = memberService.memberJoin(memberDTO);
-		System.out.println(result);
-
-
-		return "redirect:../";
+		//int result = memberService.memberJoin(memberDTO);
+		Random random = new Random();
+		int result = random.nextInt(2);
+		
+		String message="회원가입 실패";
+		String path="./memberJoin";
+		
+		if(result>0) {
+			message="회원가입 성공";
+			path="../";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		return "common/commonResult";
 		
 	}
 
