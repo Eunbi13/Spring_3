@@ -88,6 +88,8 @@ public class NoticeService implements BoardService {
 	public int setInsert(BoardDTO boardDTO)throws Exception{
 		return noticeDAO.setInsert(boardDTO);
 	}
+	
+	
 	//글수정
 	public int setUpdate(BoardDTO boardDTO)throws Exception{
 		return noticeDAO.setUpdate(boardDTO);

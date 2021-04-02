@@ -28,7 +28,7 @@
 				<tr>
 					<td>${dto.title }</td>
 					<td>${dto.contents }</td>
-					<td>${dto.date }</td>
+					<td>${dto.regDate }</td>
 					<td>${dto.hit }</td>
 				</tr>
 			</tbody>

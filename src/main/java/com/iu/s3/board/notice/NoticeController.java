@@ -68,12 +68,16 @@ public class NoticeController {
 		model.addAttribute("path", path);
 		return "common/commonResult";
 	}
+	
+	
 	//글 수정get
 	@RequestMapping("noticeUpdate")
-	public void setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
+	public String setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
 		System.out.println("--noticUpdate");
 		noticeDTO=(NoticeDTO)noticeService.getSelect(noticeDTO);
 		model.addAttribute("dto", noticeDTO);
+		model.addAttribute("board", "notice");
+		return "board/boardUpdate";
 	}
 	//글 수정 post
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.POST)
@@ -82,6 +86,9 @@ public class NoticeController {
 		noticeService.setUpdate(noticeDTO);
 		return "redirect:./noticeSelect?num="+noticeDTO.getNum();
 	}
+	
+	
+	
 	//글 삭제 get
 	@RequestMapping("noticeDelete")
 	public String setDelete(NoticeDTO noticeDTO)throws Exception{
