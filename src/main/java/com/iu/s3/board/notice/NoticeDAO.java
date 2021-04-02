@@ -1,4 +1,4 @@
-package com.iu.s3.notice;
+package com.iu.s3.board.notice;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.iu.s3.util.Pager;
 public class NoticeDAO {
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.iu.s3.notice.NoticeDAO.";
+	private final String NAMESPACE = "com.iu.s3.board.notice.NoticeDAO.";
 	//리스트
 	public List<NoticeDTO> getList(Pager pager)throws Exception{
 		

@@ -11,7 +11,8 @@
   		<typeAlias type="com.iu.s3.member.MemberDTO" alias="MemberDTO" />
   		<typeAlias type="com.iu.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
   		<typeAlias type="com.iu.s3.account.AccountDTO" alias="AccountDTO"/>
-  		<typeAlias type="com.iu.s3.notice.NoticeDTO" alias="NoticeDTO"/>
+  		<typeAlias type="com.iu.s3.board.notice.NoticeDTO" alias="NoticeDTO"/>
+  		<typeAlias type="com.iu.s3.board.qna.QnaDTO" alias="QnaDTO"/>
   		<typeAlias type="com.iu.s3.util.Pager" alias="Pager"/>
   	</typeAliases>
   <!-- mybatis가 모르니까 root-context에서 작업함 -->
