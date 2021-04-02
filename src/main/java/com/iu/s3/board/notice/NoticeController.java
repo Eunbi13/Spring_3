@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s3.board.BoardDTO;
 import com.iu.s3.member.MemberDTO;
 import com.iu.s3.util.Pager;
 
@@ -26,23 +27,30 @@ public class NoticeController {
 	public ModelAndView getList(Pager pager /* @RequestParam(defaultValue = "1") long curPage */)throws Exception{
 	
 		ModelAndView mv = new ModelAndView();
-		List<NoticeDTO> ar =  noticeService.getList(pager);
-		mv.addObject("noticeList", ar); 
-		mv.setViewName("notice/noticeList");
+		List<BoardDTO> ar =  noticeService.getList(pager);
+		mv.addObject("list", ar); 
+		mv.addObject("board","notice");
+		mv.setViewName("board/boardList");
 		mv.addObject("pager", pager);//아 이거 여러개 넣을 수 있구나
 		return mv;
 	}
-	//셀렉트 
+	// ---셀렉트-----------------셀렉트--------------------셀렉트--------------셀렉트---------------------
 	@RequestMapping("noticeSelect")
-	public void getSelect(NoticeDTO noticeDTO, Model model)throws Exception{
-		noticeDTO = noticeService.getSelect(noticeDTO);
-		
-		model.addAttribute("dto", noticeDTO);
+	public ModelAndView getSelect(BoardDTO boardDTO)throws Exception{
+		NoticeDTO noticeDTO = noticeService.getSelect(boardDTO);
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("dto", noticeDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardSelect");
+		return mv;
 	}
 	//글 쓰기 get----------------------------------------------------------
 	@RequestMapping("noticeInsert")
-	public void setInsert()throws Exception{
-		
+	public ModelAndView setInsert()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/boardInsert");
+		mv.addObject("board","notice");
+		return mv;
 	}
 	//글쓰기 post
 	@RequestMapping(value="noticeInsert", method = RequestMethod.POST)
@@ -64,7 +72,7 @@ public class NoticeController {
 	@RequestMapping("noticeUpdate")
 	public void setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
 		System.out.println("--noticUpdate");
-		noticeDTO=noticeService.getSelect(noticeDTO);
+		noticeDTO=(NoticeDTO)noticeService.getSelect(noticeDTO);
 		model.addAttribute("dto", noticeDTO);
 	}
 	//글 수정 post

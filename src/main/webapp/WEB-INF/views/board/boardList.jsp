@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 
-	<div class="container">
-		<h1>Notice List Page</h1>
+<div class="container">
+		<h1>${board } List Page</h1>
 
 		<table class="table">
 			<thead class="thead-dark">
@@ -26,10 +26,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${noticeList}" var="dto">
+				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>${dto.num }</td>
-						<td><a href="./noticeSelect?num=${dto.num }">${dto.title}</a></td>
+						<td><a href="./${board }Select?num=${dto.num }">${dto.title}</a></td>
 						<td>${dto.writer}</td>
 						<td>${dto.regDate}</td>
 						<td>${dto.hit }</td>
@@ -39,11 +39,11 @@
 		</table>
 
 
-		<c:if test="${member.id eq 'admin' }">
-			<a href="./noticeInsert" class="btn btn-dark float-right">Write</a>
+		<c:if test="${not empty member.id }">
+			<a href="./${board }Insert" class="btn btn-dark float-right">Write</a>
 		</c:if>
 	</div>
-
+<%-- 
 	<div class="container">
 		<ul class="pagination">
 
@@ -83,6 +83,6 @@
 		</div>
 
 	</div>
-
+ --%>
 </body>
 </html>

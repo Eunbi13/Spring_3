@@ -13,7 +13,7 @@
 	<div class="container">
 		<h1>Notice Insert Page</h1>
 		<h1>v6</h1>
-		<form id="frm" action="./noticeInsert" method="post" >
+		<form id="frm" action="./${board }Insert" method="post" >
 			<div class="form-group">
 				<label for="writer">writer</label> <input type="text"
 					class="form-control" readonly="readonly" id="writer" value="writer" name="writer">

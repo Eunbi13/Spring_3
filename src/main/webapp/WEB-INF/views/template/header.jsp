@@ -29,7 +29,7 @@
 			href="#" id="navbardrop" data-toggle="dropdown">BOARD</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="${pageContext.request.contextPath }/notice/noticeList">Notice</a> <a
-					class="dropdown-item" href="#">Link 2</a> <a class="dropdown-item"
+					class="dropdown-item" href="${pageContext.request.contextPath }/qna/qnaList">QNA</a> <a class="dropdown-item"
 					href="#">Link 3</a>
 			</div></li>
 	</ul>

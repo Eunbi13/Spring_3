@@ -1,1 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.iu.s3.board.qna.QnaDAO">
+    	<select id="getList" resultType="QnaDTO" >
+    		select * from qna order by num desc
+    	</select>
+    
+    
+    </mapper>
+    
+    <!-- 서버가 실행될 때 xml을 제일 처음 읽으니까,, 이게 비어있으면 안됨 ㅠㅠ 이 바보야 ㅠ -->

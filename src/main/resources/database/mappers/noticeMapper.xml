@@ -33,32 +33,31 @@
 	</select>
 
 
-	<select id="getSelect" parameterType="NoticeDTO"
-		resultType="NoticeDTO">
+	<select id="getSelect" parameterType="BoardDTO"	resultType="NoticeDTO">
 		select * from notice where num=#{num}
 	</select>
 
-	<insert id="setInsert" parameterType="NoticeDTO">
+	<update id="setHitUpdate" parameterType="BoardDTO">
+		update notice set hit=#{hit} where num=#{num}
+	</update>
+	
+	<insert id="setInsert" parameterType="BoardDTO">
 		INSERT INTO NOTICE
 		VALUES(NOTICE_SEQ.nextval, #{title}, #{contents},
 		#{writer}, SYSDATE,
 		0)
 	</insert>
 
-	<update id="setUpdate" parameterType="NoticeDTO">
+	<update id="setUpdate" parameterType="BoardDTO">
 		update notice set
 		title=#{title}, contents=#{contents} where num=#{num}
 	</update>
 
-	<delete id="setDelete" parameterType="NoticeDTO">
+	<delete id="setDelete" parameterType="BoardDTO">
 		delete notice where
 		num=#{num}
 	</delete>
 
-	<update id="setHitUpdate" parameterType="NoticeDTO">
-		update notice set
-		hit=#{hit} where num=#{num}
-	</update>
 
 
 </mapper>
