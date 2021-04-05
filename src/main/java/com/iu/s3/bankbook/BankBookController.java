@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Controller
 @RequestMapping(value="/bankbook/**")//bankbook으로 시작하는 모든 요청(하위폴더 포함)은 이 클래스로 받겠다.
@@ -22,7 +22,7 @@ public class BankBookController {
 	
 	//위에 있는 RequestMapping+value
 	@RequestMapping("bankbookList")//속성이 value 하나라면 생략 가능
-	public ModelAndView getList(Pager pager) throws Exception {
+	public ModelAndView getList(Pager_backUp pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("--startNum: "+pager.getStartNum());
 		List<BankBookDTO> ar = bankBookService.getList(pager); 

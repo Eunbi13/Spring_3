@@ -3,16 +3,17 @@ package com.iu.s3.board.qna;
 import com.iu.s3.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
-	private long rdf;
+	private long ref;
 	private long step;
 	private long depth;
 	
 	
-	public long getRdf() {
-		return rdf;
+	
+	public long getRef() {
+		return ref;
 	}
-	public void setRdf(long rdf) {
-		this.rdf = rdf;
+	public void setRef(long ref) {
+		this.ref = ref;
 	}
 	public long getStep() {
 		return step;

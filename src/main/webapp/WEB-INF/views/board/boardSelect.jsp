@@ -36,6 +36,9 @@
 	
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
 	<a href="./${board }Delete?num=${dto.num}" class="btn btn-info">Delete</a>
+	<c:if test="${board ne 'notice' }"><!-- 답글 달 때는 부모글(현재 보는글)에 대해서 정보를 넘겨줘야함 -->
+		<a href="./${board }Reply?num=${dto.num}" class="btn btn-dark">Reply</a>
+	</c:if>
 </div>
 
 </body>

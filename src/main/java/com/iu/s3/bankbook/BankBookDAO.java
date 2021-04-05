@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s3.account.AccountDTO;
-import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 
 
@@ -26,12 +26,12 @@ public class BankBookDAO {
 	
 	//getList
 	//bankbook 테이블의 모든 데이터 조회 후 리턴
-	public List<BankBookDTO> getList(Pager pager) throws Exception{
+	public List<BankBookDTO> getList(Pager_backUp pager) throws Exception{
 	
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
-	public long getTotalCount(Pager pager) throws Exception{
+	public long getTotalCount(Pager_backUp pager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
