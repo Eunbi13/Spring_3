@@ -38,7 +38,7 @@
 	</select>
 
 	<update id="setHitUpdate" parameterType="BoardDTO">
-		update notice set hit=#{hit} where num=#{num}
+		update notice set hit=hit+1 where num=#{num}
 	</update>
 	
 	<insert id="setInsert" parameterType="BoardDTO">

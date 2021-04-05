@@ -16,6 +16,8 @@ public class QnaDAO implements BoardDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE= "com.iu.s3.board.qna.QnaDAO.";
+	
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub

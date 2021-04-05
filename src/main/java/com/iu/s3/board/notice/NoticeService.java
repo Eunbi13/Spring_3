@@ -75,14 +75,11 @@ public class NoticeService implements BoardService {
 	}
 	//셀렉트
 	public NoticeDTO getSelect(BoardDTO boardDTO) throws Exception{//num2보드에 잇는 숫자로
-		NoticeDTO noticeDTO = noticeDAO.getSelect(boardDTO);//겟 셀렉트를 조회하는 거임
-		long num = noticeDTO.getHit()+1;//그럼 여기서 조회된 데이터hit에 +1을 하고 
-		System.out.println(num);
-		noticeDTO.setHit(num);//다시 그 숫자로 데이터hit에 넣고 
-		noticeDAO.setHitUpdate(noticeDTO);//업데이트 하기
-		//그리고 업데이트 된 것을 다시 조회,,
-		noticeDTO = noticeDAO.getSelect(noticeDTO);
-		return noticeDTO;
+	
+		noticeDAO.setHitUpdate(boardDTO);//업데이트 하기 리턴으로 int나옴 그리고 이미 저장됨 +1되어서 
+	
+		
+		return noticeDAO.getSelect(boardDTO);
 	}
 	//글 쓰기-------------------------------------------------------
 	public int setInsert(BoardDTO boardDTO)throws Exception{

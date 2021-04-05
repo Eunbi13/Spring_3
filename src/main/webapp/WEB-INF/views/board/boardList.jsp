@@ -29,7 +29,13 @@
 				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>${dto.num }</td>
-						<td><a href="./${board }Select?num=${dto.num }">${dto.title}</a></td>
+						<td><a href="./${board }Select?num=${dto.num }">
+						<!-- depth begin에는 0넣으면 안됨 왜냐하면 end가 포함이라서 begin < x <= end 로 만들어짐-->
+							<c:catch>
+								<c:forEach begin="1" end="${dto.depth }">--</c:forEach>
+							</c:catch>
+							${dto.title}
+						</a></td>
 						<td>${dto.writer}</td>
 						<td>${dto.regDate}</td>
 						<td>${dto.hit }</td>
@@ -40,7 +46,7 @@
 
 
 		<c:if test="${not empty member.id }">
-			<a href="./${board }Insert" class="btn btn-dark float-right">Write</a>
+			<a href="./${board }Insert" class="btn btn-dark float-right" ">Write</a>
 		</c:if>
 	</div>
 <%-- 

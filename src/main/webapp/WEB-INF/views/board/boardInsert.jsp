@@ -16,7 +16,7 @@
 		<form id="frm" action="./${board }Insert" method="post" >
 			<div class="form-group">
 				<label for="writer">writer</label> <input type="text"
-					class="form-control" readonly="readonly" id="writer" value="writer" name="writer">
+					class="form-control" readonly="readonly" id="writer" value="${member.name}" name="writer">
 			</div>
 			
 			<div class="form-group">
@@ -30,10 +30,10 @@
 			</div> <!-- 비어잇음 x -->
 			
 		
-			<input type="button" id="btn" value="write" class="btn btn-dark float-right" >
+			<input type="submit" id="btn" value="write" class="btn btn-dark float-right" >
 		</form>
 	</div>
-			<script type="text/javascript" src="../resources/js/insertCheck.js"></script>
+			<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
 
 
 </body>
