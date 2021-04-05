@@ -6,15 +6,28 @@
 
     <mapper namespace="com.iu.s3.board.qna.QnaDAO">
     	<select id="getList" parameterType="Pager" resultType="QnaDTO" >
-			select * from (
-				select rownum R, Q.* from ( 
-					select * from qna order by ref desc, step asc) Q) 
-			<!--where R between #{startRow} and #{lastRow}-->
+			select * from 
+				(select rownum R, Q.* from 			
+					( select * from qna where 
+						<choose>
+							<when test="kind=='Title'">title</when>
+							<when test="kind=='Contents'">contents</when>
+							<otherwise>writer</otherwise>
+						</choose> 
+						like '%'||#{search}||'%' and num>0 
+					order by ref desc, step asc) Q ) 
+			where R between #{startRow} and #{lastRow}
 
     	</select>
 
 		<select id="getTotalCount" parameterType="Pager" resultType="long">
-			select count(num) from qna
+			select count(num) from qna where 
+				<choose>
+					<when test="kind=='Title'">title</when>
+					<when test="kind=='Contents'">contents</when>
+					<otherwise>writer</otherwise>
+				</choose>
+				like '%'||#{search}||'%' and num>0 order by num desc
 		</select>
 
 

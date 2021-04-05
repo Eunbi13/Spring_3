@@ -12,8 +12,8 @@
 				(select * from notice where
 					<!-- 컬럼명을 #{kind}이걸로 받아올 수 없다 함,, 그래서 동적sql로 쓸거라 함 -->
 					<choose>
-						<when test="kind=='writer'"> writer</when>
-						<when test="kind=='contents'">contents</when>
+						<when test="kind=='Writer'"> writer</when>
+						<when test="kind=='Contents'">contents</when>
 						<otherwise>title</otherwise>
 					</choose>
 				<!-- 연결 연산자 인덱스에 pk가 자동 저장 검색을 더 빠르게 하려고 num>0 -->
@@ -25,8 +25,8 @@
 	<select id="getTotalCount" parameterType="Pager" resultType="long"><!-- java.lang.Long -->
 		select count(num)from notice where
 		<choose>
-			<when test="kind=='writer'"> writer</when>
-			<when test="kind=='contents'">contents</when>
+			<when test="kind=='Writer'"> writer</when>
+			<when test="kind=='Contents'">contents</when>
 			<otherwise>title</otherwise>
 		</choose>
 		like '%'||#{search}||'%' and num>0 order by num desc

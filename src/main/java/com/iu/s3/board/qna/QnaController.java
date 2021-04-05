@@ -25,6 +25,7 @@ public class QnaController {
 		mv.addObject("list", ar);
 		mv.setViewName("board/boardList");
 		mv.addObject("board", "qna");
+		mv.addObject("pager", pager);
 		return mv;
 	}
 	@GetMapping("qnaSelect")
