@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,28 +74,52 @@ public class NoticeController {
 	
 	//글 수정get
 	@RequestMapping("noticeUpdate")
-	public String setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
+	public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		System.out.println("--noticUpdate");
-		noticeDTO=(NoticeDTO)noticeService.getSelect(noticeDTO);
-		model.addAttribute("dto", noticeDTO);
-		model.addAttribute("board", "notice");
-		return "board/boardUpdate";
+		
+		boardDTO=noticeService.getSelect(boardDTO);
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardUpdate");
+		return mv;
 	}
 	//글 수정 post
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.POST)
-	public String setUpdate(NoticeDTO noticeDTO)throws Exception{		
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{	
+	
 		System.out.println("noticeUpdate--");
-		noticeService.setUpdate(noticeDTO);
-		return "redirect:./noticeSelect?num="+noticeDTO.getNum();
+		
+		int result =noticeService.setUpdate(boardDTO);
+		//성공하면 리스트 실패하면 alert창 하고 리스트로 이동
+		if(result>0) {
+			mv.setViewName("redirect:./noticeList");
+		}else {
+			mv.addObject("msg","Failed");
+			mv.addObject("path","./noticeList");
+			mv.setViewName("common/commonResult");
+		}
+		
+		return mv;
 	}
 	
 	
 	
-	//글 삭제 get
-	@RequestMapping("noticeDelete")
-	public String setDelete(NoticeDTO noticeDTO)throws Exception{
-		noticeService.setDelete(noticeDTO);
-		return "redirect:./noticeList";
+	//글 삭제 
+	@PostMapping("noticeDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setDelete(boardDTO);
+		String message="failed";
+		String path="./noticeList";
+		if(result>0) {
+			message="succes";
+		}
+		mv.addObject("msg",message);
+		mv.addObject("path",path);
+		mv.setViewName("common/commonResult");
+		
+		return mv;
 	}
 	
 }

@@ -51,8 +51,17 @@
 		<insert id="setReply" parameterType="QnaDTO">
 			insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
 		</insert>
+		
+		
+		
+		<delete id="setDelete" parameterType="BoardDTO">
+			delete qna where num=#{num}
+		</delete>
     
-    
+	    <update id="setUpdate" parameterType="BoardDTO">
+			update qna set
+			title=#{title}, contents=#{contents} where num=#{num}
+		</update>
     </mapper>
     
     <!-- 서버가 실행될 때 xml을 제일 처음 읽으니까,, 이게 비어있으면 안됨 ㅠㅠ 이 바보야 ㅠ -->

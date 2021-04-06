@@ -35,11 +35,35 @@
 	</table>
 	
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
-	<a href="./${board }Delete?num=${dto.num}" class="btn btn-info">Delete</a>
+	<a href="#" id="del" class="btn btn-info">Delete</a>
 	<c:if test="${board ne 'notice' }"><!-- 답글 달 때는 부모글(현재 보는글)에 대해서 정보를 넘겨줘야함 -->
 		<a href="./${board }Reply?num=${dto.num}" class="btn btn-dark">Reply</a>
 	</c:if>
+	
+	<form  action="./${board }Delete" id="frm" >
+		<input type="hidden" name="num" value="${dto.num}">
+		
+	</form>
+	
+	
+	
+	
 </div>
-
+<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
+	
+	del.addEventListener("click", function(){
+		let result = window.confirm("Delete?")
+		console.log(result);
+		
+		if(result){
+		//	frm.setAttribute("method", "POST");
+			frm.method="POST";
+			frm.submit();
+		//	location.href="./${board }Delete?num=${dto.num}";
+		}
+	});
+</script>
 </body>
 </html>

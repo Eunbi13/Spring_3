@@ -76,5 +76,48 @@ public class QnaController {
 	}
 	
 	
-
+	//========Delete========
+	@PostMapping("qnaDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String message="Failed";
+		String path="./qnaList";
+		int result = qnaService.setDelete(boardDTO);
+		if(result>0) {
+			message="Succesed";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path", path);
+		mv.setViewName("common/commonResult");
+		return mv;
+	}
+	
+	//========Update=======
+	@GetMapping("qnaUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		boardDTO = qnaService.getSelect(boardDTO);
+		
+		mv.setViewName("board/boardUpdate");
+		mv.addObject("board","qna");
+		mv.addObject("dto", boardDTO);
+		return mv;
+	}
+	
+	@PostMapping("qnaUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
+		int result = qnaService.setUpdate(boardDTO);
+		if(result>0) {
+			mv.setViewName("redirect:./qnaList");
+		}else {
+			mv.setViewName("common/commonResult");
+			mv.addObject("msg", "Failed");
+			mv.addObject("path", "./qnaList");
+		}
+		
+		
+		
+		return mv;
+	}
 }
