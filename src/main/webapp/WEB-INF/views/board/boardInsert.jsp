@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	#sample{
+		display: none;
+	}
+
+</style>
+
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,12 +37,39 @@
 				<textarea class="form-control exist mycheck" id="contents" rows="3" name="contents"></textarea>
 			</div> <!-- 비어잇음 x -->
 			
-		
+			<input type="button" id="add" value="add" class="btn btn-danger float-right" >
+			<div id="files">
+			<!-- add를 클릭하면 sample태그가 이 div 내부에 붙여넣기 되면 좋겠다.append쓰래 단, 최대 5개까지만 만들어지도록 -->
+				
+			</div>
 			<input type="button" id="btn" value="write" class="btn btn-dark float-right" >
 		</form>
 	</div>
-			<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
-	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
+	
+	<div id="sample" class="sampleIndex">
+		<div class="form-group">
+	      <input type="file" class="form-control-file border" name="file">
+	    </div>
+	</div>
+	
+	<script type="text/javascript">
+		let i = 0;
+		$("#add").click(function(){
+			let sample = $("#sample").html();
+		
+			if(i<5){
+				$("#files").append(sample);
+				i++
+			}else{
+				alert("최대 5개까지 가능합니다.")
+			}
+			
+			
+		});
+	
+	</script>
+	
+	<!-- <script type="text/javascript" src="../resources/jquery/boardInsert.js"></script> -->
 
 </body>
 </html>
