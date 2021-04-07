@@ -9,7 +9,21 @@
 <c:import url="./template/bootStrap.jsp"></c:import>
 <link rel="stylesheet" href="./resources/css/test.css">
 
+	<style type="text/css">
+	#d1{
+		width: 200px;
+		height: 200px;
+		background-color: salmon;
+		overflow: hidden;
+	}
 	
+	#d2{
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		margin: 75px auto;
+	}
+	</style>
 
 <title>Home!</title>
 </head>
@@ -30,6 +44,11 @@
 		
 	</select>
 	
+	<div id="d1">
+		<div id="d2">
+			
+		</div>
+	</div>
 	
 	<script type="text/javascript">
 		$("#btn").click(function(){//이거 걍 안쓰고 반복문만 쓰면 페이지 열리자 마자 자바스크립트 활동함 ㅇㅇ
@@ -45,6 +64,16 @@
 			$("#result").prepend('<option>월</option>')
 			
 		})
+		
+		
+		$("#d1").click(function(){
+			console.log("parent");
+		});//#d1
+		
+		$("#d2").click(function(){
+			console.log("child");
+		});//#d2
+		
 	/* 
 		$(".b").click(function(){
 			alert($("#t").text());

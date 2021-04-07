@@ -9,8 +9,7 @@ public class BoardDTO {
 	private String writer;
 	private Date regDate;
 	private long hit;
-
-
+	
 	public long getNum() {
 		return num;
 	}

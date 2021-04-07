@@ -74,10 +74,10 @@
 		<div class="input-group mt-3 mb-3">
 			<form action="./${board }List" class="form-inline" id="frm">
 			
-			<input type="hidden" name="curPage" value="1" id="curPage">
+			<input type="hidden" name="curPage" value="1" id="curPage"> <!-- 아닛? 여기서 보내네 -->
 			
 				<div class="input-group-prepend">
-					<select class="form-control"  name="kind" id="kind" >
+					<select class="form-control"  name="kind" id="kind" > <!-- 벨류값이 없음 셀렉트는 선택한 애에게 벨류가 있음-->
 						<option class="sel">Title</option>
 						<option class="sel">Contents</option>
 						<option class="sel">Writer</option>
@@ -95,30 +95,36 @@
 	
 	<script type="text/javascript">
 	$('.sel').each(function(){
-		let t = $(this).text();
-		if(t == kind){
-			$(this).prop("selected", true);
+		let kind = '${pager.kind}';//이거 왜 안적음 멍청아!
+		let t = $(this).text();   //kind값을 받음 첫번째로 Title 뜸, Contents, Writer 뜸 
+		if(t == kind){			//t에 있는것이 kind와 같냐
+			$(this).prop("selected", true);//selected가 true속성이면 <option selected>이케 됨
 		}
 	})
 	$(".p").click(function(){
 		let curPage = $(this).attr("title");
-		$("#curPage").val(curPage);
-		let search='${pager.search}';
+		 $("#curPage").val(curPage);//폼태그의 벨류에 넣어둔거임 
+		 //====파라미터로 넘길 curPage을 찾는 과정====
+		$("#frm").submit(); 
+		//이게 그 검색어랑 옵션 선택한게 남아있도록 하려는 건데 그건 form태그에서 value로 pager.kind, pager.search로 받아서 ㅇㅋㅇㅋ
 		
-	
 		
-		//$("#frm").submit(); 
 		
-		/* $("#curPage").val(curPage);
-		$("#kind").val(kind);
+		/*
+		let kind = '${pager.kind}';
+		let search= '${pager.search}'; 
+		$('#curPage').val(curPage);
+		$('#kind').val(kind);
 		$('#search').val(search);
-		
-		$("#frm").submit(); */
+		$("#frm").submit(); //전송해버리겠다. 
+		*/
+	
+		/* 
 		$(this).attr("curPage", curPage)
 		$(this).attr("kind", '${pager.kind}')
 		$(this).attr("search", '${pager.search}')
 		location.href="./${board}List" 
-		//location.href="./${board }List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+		 */
 	});
 	</script>
 </body>
