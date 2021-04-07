@@ -10,8 +10,12 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
-	
 	private final String NAMESPACE = "com.iu.s3.member.MemberDAO.";
+	
+	//setFileInsert
+	public int setFileInsert(MemberFileDTO memberFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", memberFileDTO);
+	}
 	
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);

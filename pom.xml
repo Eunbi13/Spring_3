@@ -15,6 +15,17 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload 
+				파일 업로드 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+
+
+
 		<!-- mybatis 마이바티스 연결 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -39,7 +50,7 @@
 			<artifactId>ojdbc10</artifactId>
 			<version>19.8.0.0</version>
 		</dependency>
-		
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

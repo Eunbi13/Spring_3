@@ -25,7 +25,7 @@
 	<h1>memberJoin page</h1>
 	<h1>v5</h1>
 	<div class="container">
-		<form id="frm" action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post"  enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text"
 					class="form-control" placeholder="Enter id" id="id" name="id">
@@ -58,6 +58,11 @@
 				<label for="phone">Phone:</label> <input type="text"
 					class="form-control exist" placeholder="Enter phone" id="phone" name="phone">
 			</div> <!-- 비어잇음 x -->
+			
+			<div class="form-group">
+				<label for="avatar">Avatar</label> <input type="file"
+					class="form-control exist" placeholder="Enter avatar" id="avatar" name="avatar">
+			</div>
 			
 			<input type="submit" value="Join" id="btn" class="btn btn-primary" >
 		</form>

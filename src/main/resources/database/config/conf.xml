@@ -9,6 +9,7 @@
   <configuration>
   	<typeAliases><!-- 별칭을 주는 태그 -->
   		<typeAlias type="com.iu.s3.member.MemberDTO" alias="MemberDTO" />
+  		<typeAlias type="com.iu.s3.member.MemberFileDTO" alias="MemberFileDTO"/>
   		<typeAlias type="com.iu.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
   		<typeAlias type="com.iu.s3.account.AccountDTO" alias="AccountDTO"/>
   		<typeAlias type="com.iu.s3.board.notice.NoticeDTO" alias="NoticeDTO"/>

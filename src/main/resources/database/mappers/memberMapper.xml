@@ -9,6 +9,10 @@
     	insert into member(id, pw, name, phone, email) values (#{id}, #{pw}, #{name}, #{phone}, #{email})
     </insert>
     
+    <insert id="setFileInsert" parameterType="MemberFileDTO">
+    	insert into memberfile values(fn_seq.nextval, #{id}, #{fileName}, #{origineName})
+    </insert>
+    
     <select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
     	SELECT * FROM member WHERE id=#{id} and pw=#{pw} 
     </select>

@@ -12,6 +12,18 @@ public class memberDAOTest extends MyAbstractTest {
 	@Autowired
 	private MemberDAO memberDAO; 
 	
+	@Test
+	public void setFileInsert()throws Exception{
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId("day");
+		memberFileDTO.setFileName("dailfjas");
+		memberFileDTO.setOrigineName("disaodflj");
+		
+		int result = memberDAO.setFileInsert(memberFileDTO);
+		assertEquals(1, result);
+	}
+	
+	
 	//@Test
 	public void memberJoin() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
@@ -42,7 +54,7 @@ public class memberDAOTest extends MyAbstractTest {
 		assertEquals(1, result);
 	}
 	
-	@Test
+	//@Test
 	public void memberUpdate() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("tomorrow");
