@@ -34,16 +34,13 @@
 			</tbody>
 	</table>
 	<div>
-		<c:if test="${board=='notice' }">
-			<c:forEach items="${dto.noticeFiles }" var="file">
+	
+			<c:forEach items="${dto.boardFiles }" var="file">
 				<a href="../resources/upload/${board}/${file.fileName}">${file.origineName }</a>
 			</c:forEach>
-		</c:if>
-		<c:if test="${board=='qna' }">
-			<c:forEach items="${dto.qnaFiles }" var = "file">
-				<a href="../resources/upload/${board }/${file.fileName}">${file.origineName  }</a>
-			</c:forEach>
-		</c:if>
+	
+		
+
 	</div>
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
 	<a href="#" id="del" class="btn btn-info">Delete</a>

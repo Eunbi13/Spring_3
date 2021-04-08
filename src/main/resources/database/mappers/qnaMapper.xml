@@ -48,7 +48,7 @@
 			<result property="ref" column="ref"/>
 			<result property="step" column="step"/>
 			<result property="depth" column="depth"/>
-			<collection property="qnaFiles" javaType="java.util.List" ofType="BoardFileDTO">
+			<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
 				<id property="fileNum" column="fileNum"/>
 				<result property="fileName" column="fileName"/>
 				<result property="origineName" column="origineName"/>
