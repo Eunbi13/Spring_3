@@ -48,14 +48,14 @@ public class QnaService implements BoardService{
 	@Override
 	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-	
+		long num = qnaDAO.getNum();
+		boardDTO.setNum(num);
 		int result=qnaDAO.setInsert(boardDTO);
 		for(MultipartFile mf : files) {
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			
 			String fileName = fileManager.save("qna", mf, session);
-			
-			boardFileDTO.setNum(boardDTO.getNum());
+			boardFileDTO.setNum(num);
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOrigineName(mf.getOriginalFilename());
 			

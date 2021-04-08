@@ -12,22 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileManager {
-	//파일 삭제
-	public boolean delete(String name, HttpSession session, String fileName)throws Exception{
-		//1.내가 삭제하려고 하는 파일이 잇는 경로 설정
-		String path = session.getServletContext().getRealPath("resources/upload/"+name);
-		System.out.println(path);
-		File file = new File(path, fileName);//path까지의 경로에서 fileName을 지정하는 거임 
-		boolean check = false;
-		if(file.exists()) {
-			check = file.delete();
-		}//if문 상관 x
-		return check;
-	}
 	
-	
-	
-	//최종 정리 버전 (이건 파일을 카피하는것)
+	//최종 정리 버전 
 	public String save(String name, MultipartFile multipartFile, HttpSession session)throws Exception{
 		//어느폴더명에 넣을지 필요한 name
 		//1.저장할 폴더 지정

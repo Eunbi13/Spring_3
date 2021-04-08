@@ -61,15 +61,11 @@
 		</update>
 		
 
-		<!-- <select id="getNum" resultType="java.lang.Long">
+		<select id="getNum" resultType="java.lang.Long">
 			select qna_seq.nextval from dual
-		</select> -->
+		</select>
+
 		<insert id="setInsert" parameterType="BoardDTO" >
-			<selectKey keyProperty="num" resultType="java.lang.Long" order="BEFORE">
-			<!-- 보드디티오의 변수명을 key로 쓰고 결과값 타입을 쓰고 오더는 insert문 전에 할건지 후에 할건지 정하는거  -->
-				select qna_seq.nextval from dual
-			</selectKey>
-			
 			insert into qna values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0)
 		</insert>
 		

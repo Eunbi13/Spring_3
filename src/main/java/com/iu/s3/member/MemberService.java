@@ -39,12 +39,7 @@ public class MemberService {
 	}
 	
 	//탈퇴
-	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception{
-		
-		//아이디를 알고잇는데 그 아이디가 알고 잇는 파일을 찾아가야하잖음 fk로 있음 ㅇㅇ 파일네임을 알아야함 아이디로 조회할거임
-		MemberFileDTO memberFileDTO=memberDAO.getMemberFile(memberDTO);
-		boolean check = fileManager.delete("member", session, memberFileDTO.getFileName()) ;
-		System.out.println(check);
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
 		return memberDAO.memberDelete(memberDTO);
 	}
 	//수정
