@@ -60,6 +60,12 @@ public class NoticeDAO implements BoardDAO{
 	public int setDelete(BoardDTO boardDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
+	
+	public List<BoardFileDTO> getBoardFile(BoardDTO boardDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getBoardFile", boardDTO);
+	}
+	
+	
 	//hit업데이트
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", boardDTO);

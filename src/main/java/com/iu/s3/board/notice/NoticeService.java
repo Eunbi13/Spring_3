@@ -75,10 +75,19 @@ public class NoticeService implements BoardService {
 	
 	//글수정
 	public int setUpdate(BoardDTO boardDTO)throws Exception{
+		
+		
 		return noticeDAO.setUpdate(boardDTO);
 	}
 	//글 삭제
 	public int setDelete(BoardDTO boardDTO)throws Exception{
+		List<BoardFileDTO> files = noticeDAO.getBoardFile(boardDTO);
+		for(BoardFileDTO fileName : files) {
+			boolean check=fileManager.delete("notice", session, fileName.getFileName());
+			System.out.println(check);
+			System.out.println(fileName);
+		}
+		
 		return noticeDAO.setDelete(boardDTO);
 	}
 	
