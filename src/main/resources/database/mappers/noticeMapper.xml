@@ -82,6 +82,9 @@
 		num=#{num}
 	</delete>
 
-
+	
+	<select id="getBoardFile" parameterType="BoardDTO" resultType="java.util.List">
+		select fileName from noticefiles where num=#{num}
+	</select>
 
 </mapper>

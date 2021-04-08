@@ -39,7 +39,7 @@ public class MemberController {
 	public String memberDelete(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		//invalidate하고 session에 담고 싶어도 해당 id가 없는 거 그니까 key가 없어졌다고 생각해도 될듯
-		int num = memberService.memberDelete(memberDTO);//여기까진 DB를 지운것 session과는 독립적임
+		int num = memberService.memberDelete(memberDTO, session);//여기까진 DB를 지운것 session과는 독립적임
 		System.out.println(num+"삭제 완료");
 		session.invalidate();//session 종료, session데이터 삭제
 		

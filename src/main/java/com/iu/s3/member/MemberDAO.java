@@ -24,10 +24,15 @@ public class MemberDAO {
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
 	}
-		
+	//탈퇴
 	public int memberDelete(MemberDTO memberDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
+	//파일 삭제
+	public MemberFileDTO getMemberFile(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMemberFile", memberDTO);
+	}
+	
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
