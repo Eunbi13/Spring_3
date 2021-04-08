@@ -84,7 +84,7 @@ public class NoticeService implements BoardService {
 		for(BoardFileDTO fileName : files) {
 			boolean check=fileManager.delete("notice", session, fileName.getFileName());
 			System.out.println(check);
-			System.out.println(fileName);
+			System.out.println(fileName.getOrigineName());
 		}
 		
 		

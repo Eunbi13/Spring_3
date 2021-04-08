@@ -5,8 +5,7 @@
 
 <mapper namespace="com.iu.s3.board.notice.NoticeDAO">
 
-	<select id="getList" parameterType="Pager"
-		resultType="NoticeDTO">
+	<select id="getList" parameterType="Pager" resultType="NoticeDTO">
 		select * from
 			(select rownum R, N.* from
 				(select * from notice where
@@ -83,7 +82,7 @@
 	</delete>
 
 	
-	<select id="getBoardFile" parameterType="BoardDTO" resultType="java.util.List">
+	<select id="getBoardFile" parameterType="BoardDTO" resultType="BoardFileDTO">
 		select fileName from noticefiles where num=#{num}
 	</select>
 

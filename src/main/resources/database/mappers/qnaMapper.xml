@@ -93,6 +93,12 @@
 		<delete id="setDelete" parameterType="BoardDTO">
 			delete qna where num=#{num}
 		</delete>
+		
+		<select id="getBoardFile" parameterType="BoardDTO" resultType="BoardFileDTO">
+			select fileName from qnafiles where num=#{num}
+		</select>
+		
+		
     
 	    <update id="setUpdate" parameterType="BoardDTO">
 			update qna set

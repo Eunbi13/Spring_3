@@ -95,8 +95,19 @@ public class QnaService implements BoardService{
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
+		List<BoardFileDTO> files =qnaDAO.getBoardFile(boardDTO);
+		for(BoardFileDTO file : files) {
+			boolean check =fileManager.delete("qna", session, file.getFileName());
+			System.out.println(check);
+		}
+		
+		
 		return qnaDAO.setDelete(boardDTO);
 	}
+	
+	
+	
+	
 	//===============update==================
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
