@@ -1,7 +1,9 @@
 package com.iu.s3.member;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -21,14 +23,18 @@ public class MemberService {
 	private FileManager fileManager;
 	
 	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar, HttpSession session)throws Exception{
-		fileManager.save("member", avatar, session);
+		String fileName = fileManager.save("member", avatar, session);
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId(memberDTO.getId());
+		memberFileDTO.setOrigineName(avatar.getOriginalFilename());
+		memberFileDTO.setFileName(fileName);
 		
-		return 0;
-		//return memberDAO.memberJoin(memberDTO);
+		int result = memberDAO.memberJoin(memberDTO);
+		result = memberDAO.setFileInsert(memberFileDTO);
+		return result;
 	}
-	
+	//로그인
 	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-		
 		return memberDAO.memberLogin(memberDTO);
 	}
 	

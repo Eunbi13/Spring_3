@@ -31,18 +31,49 @@
 		</select>
 
 
-		<select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
-			select * from qna where num=#{num}
+		<select id="getSelect" parameterType="BoardDTO" resultMap="SelectResult">
+			select Q.*, QF.*
+			from qna Q left join qnafiles QF
+			on Q.num=QF.num
+			where Q.num=#{num}
 		</select>
+		
+		<resultMap type="QnaDTO" id="SelectResult">
+			<id property="num" column="num"/>
+			<result property="title" column="title"/>
+			<result property="contents" column="contents"/>
+			<result property="writer" column="writer"/>
+			<result property="regDate" column="regDate"/>
+			<result property="hit" column="hit"/>
+			<result property="ref" column="ref"/>
+			<result property="step" column="step"/>
+			<result property="depth" column="depth"/>
+			<collection property="qnaFiles" javaType="java.util.List" ofType="BoardFileDTO">
+				<id property="fileNum" column="fileNum"/>
+				<result property="fileName" column="fileName"/>
+				<result property="origineName" column="origineName"/>
+			</collection>
+		</resultMap>
+		
 		
 		<update id="setHitUpdate" parameterType="BoardDTO">
 			update qna set hit=hit+1 where num=#{num}
 		</update>
 		
 
+		<select id="getNum" resultType="java.lang.Long">
+			select qna_seq.nextval from dual
+		</select>
+
 		<insert id="setInsert" parameterType="BoardDTO" >
-			insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval, 0, 0)
+			insert into qna values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0)
 		</insert>
+		
+		<insert id="setFileInsert" parameterType="BoardFileDTO">
+			insert into qnafiles values(file_seq.nextval, #{num}, #{fileName},#{origineName})
+		</insert>
+		
+		
 		
 		<update id="setReplyUpdate" parameterType="QnaDTO">
 			update qna set step=step+1 where ref=#{ref} and step>#{step}

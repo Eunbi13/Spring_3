@@ -33,7 +33,18 @@
 				</tr>
 			</tbody>
 	</table>
-	
+	<div>
+		<c:if test="${board=='notice' }">
+			<c:forEach items="${dto.noticeFiles }" var="file">
+				<a href="../resources/upload/${board}/${file.fileName}">${file.origineName }</a>
+			</c:forEach>
+		</c:if>
+		<c:if test="${board=='qna' }">
+			<c:forEach items="${dto.qnaFiles }" var = "file">
+				<a href="../resources/upload/${board }/${file.fileName}">${file.origineName  }</a>
+			</c:forEach>
+		</c:if>
+	</div>
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
 	<a href="#" id="del" class="btn btn-info">Delete</a>
 	<c:if test="${board ne 'notice' }"><!-- 답글 달 때는 부모글(현재 보는글)에 대해서 정보를 넘겨줘야함 -->

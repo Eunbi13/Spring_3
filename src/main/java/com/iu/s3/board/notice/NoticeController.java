@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.board.BoardDTO;
@@ -56,10 +57,11 @@ public class NoticeController {
 	}
 	//글쓰기 post
 	@RequestMapping(value="noticeInsert", method = RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO, HttpSession session, Model model)throws Exception{
+	public String setInsert(NoticeDTO noticeDTO, HttpSession session, Model model, MultipartFile [] files)throws Exception{
 		noticeDTO.setWriter(((MemberDTO)session.getAttribute("member")).getId());
-		System.out.println("글쓰는 id: "+((MemberDTO)session.getAttribute("member")));
-		int result = noticeService.setInsert(noticeDTO);
+		
+		int result = noticeService.setInsert(noticeDTO, files);
+		
 		String message = "잘 못 입력하셨습니다.";
 		String path = "./noticeInsert";
 		if(result>0) {

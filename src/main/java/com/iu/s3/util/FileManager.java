@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManager {
 	
 	//최종 정리 버전 
-	public void save(String name, MultipartFile multipartFile, HttpSession session)throws Exception{
+	public String save(String name, MultipartFile multipartFile, HttpSession session)throws Exception{
 		//어느폴더명에 넣을지 필요한 name
 		//1.저장할 폴더 지정
 		String path = session.getServletContext().getRealPath("resources/upload/"+name);
@@ -28,24 +28,28 @@ public class FileManager {
 		}
 		//2.저장할 파일명
 		String fileName ="";
-		
+		//2-1.시간응용
 //		Calendar ca = Calendar.getInstance();
 //		long time = ca.getTimeInMillis();
 //		fileName = time+"_"+multipartFile.getOriginalFilename();
-		
+		//2-2.api응용
 		fileName = UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
 		
 		//3.HDD에 저장
 		file = new File(file, fileName);//file은 경로가 담긴 변수이고 fileName은 이름이 담긴 변수 이 둘로 파일변수를 하나 생성
+		//3-1.filecopyutile static 메서드 응용
 //		FileCopyUtils.copy(multipartFile.getBytes(), file);//저 이진데이터랑 파일을 이용해서 새로운 파일로 카피
+		//3-2. multipartFile 메서드 응용 멀티파티파일에 업로드한 모든 데이터가 있음 그걸 파일객체(주소와 이름이 들어있는)에 전송하자 이거임
 		multipartFile.transferTo(file);//그걸 작업하겠다. 
+		
+		return fileName;
 	}
 
 	public File makePath(HttpSession session) throws Exception{
 		
 		//1.저장할 폴더 지정 resources/upload/member 
 		//2.os에서 사용하는 인식할 수 있는 실제 경로 얘 입장에서는 c:가 루트이고
-		//이거 쓸려면 섹션 등 내장 객체가 필요함 
+		//이거 쓸려면 섹션 등 톰켓이 만들어주는내장 객체가 필요함 
 		//어플리케이션 객체가 os와 연결하는 애라고 함 
 		//jsp: application - server: ServletContext session에서 어플리케이션을 꺼내고 리퀘스트에서 섹션 꺼내고
 		String path = session.getServletContext().getRealPath("resources/upload/member");

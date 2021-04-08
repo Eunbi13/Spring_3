@@ -33,20 +33,44 @@
 	</select>
 
 
-	<select id="getSelect" parameterType="BoardDTO"	resultType="NoticeDTO">
-		select * from notice where num=#{num}
+	<select id="getSelect" parameterType="BoardDTO"	resultMap="SelectResult">
+		select N.*, NF.* from notice N left join noticeFiles NF
+		on N.num = NF.num
+		where N.num=#{num}
 	</select>
+	
+	<resultMap type="NoticeDTO" id="SelectResult">
+		<id property="num" column="num"/>
+		<result property="title" column="title"/>
+		<result property="contents" column="contents"/>
+		<result property="writer" column="writer"/>
+		<result property="regDate" column="regDate"/>
+		<result property="hit" column="hit"/>
+		<collection property="noticeFiles" javaType="java.util.List" ofType="BoardFileDTO">
+			<id property="fileNum" column="fileNum"/>
+			<result property="fileName" column="fileName"/> 
+			<result property="origineName" column="origineName"/>
+		</collection>
+	
+	</resultMap>
+	
 
 	<update id="setHitUpdate" parameterType="BoardDTO">
 		update notice set hit=hit+1 where num=#{num}
 	</update>
 	
+	<select id="getNum" resultType="java.lang.Long">
+		select notice_seq.nextval from dual
+	</select>
 	<insert id="setInsert" parameterType="BoardDTO">
 		INSERT INTO NOTICE
-		VALUES(NOTICE_SEQ.nextval, #{title}, #{contents},
-		#{writer}, SYSDATE,
-		0)
+		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE,0)
 	</insert>
+	
+	<insert id="setFileInsert" parameterType="BoardFileDTO" >
+		insert into noticeFiles values (file_seq.nextval, #{num}, #{fileName}, #{origineName})
+	</insert>
+	
 
 	<update id="setUpdate" parameterType="BoardDTO">
 		update notice set

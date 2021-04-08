@@ -40,7 +40,7 @@
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> <input type="password"
-					class="form-control" placeholder="Enter password" id="pw2" name="pw2">
+					class="form-control" placeholder="Enter password" id="pw2" name="pw2"><!-- 어차피 안쓰는 파라미터 네임은 빼도 된다. -->
 					<h6 id="pw2Result"></h6>
 			</div> <!-- 비번 확인용, 일치하는지 -->
 			

@@ -13,9 +13,28 @@
     	insert into memberfile values(fn_seq.nextval, #{id}, #{fileName}, #{origineName})
     </insert>
     
-    <select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-    	SELECT * FROM member WHERE id=#{id} and pw=#{pw} 
+    <select id="memberLogin" parameterType="MemberDTO" resultMap="MemberLoginResult">
+    	SELECT M.*, MF.* 
+    	FROM member M left join memberfile MF 
+    	on M.id=MF.id
+    	WHERE M.id=#{id} and M.pw=#{pw} 
     </select>
+    
+    <resultMap type="MemberDTO" id="MemberLoginResult">
+    	<id property="id" column="id"/><!-- pk입력 -->
+    	<result property="pw" column="pw"/>
+    	<result property="name" column="name"/>
+    	<result property="email" column="email"/>
+    	<result property="phone" column="phone"/>
+    	<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="MemberFileResult">
+    	</association>
+    </resultMap>
+    
+    <resultMap type="MemberFileDTO" id="MemberFileResult">
+    		<id property="num" column="num"/>
+    		<result property="fileName" column="fileName"/>
+    		<result property="origineName" column="origineName"/>
+    </resultMap>
     
     <delete id="memberDelete" parameterType="MemberDTO">
     	delete member WHERE id=#{id}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s3.board.BoardDAO;
 import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardFileDTO;
 import com.iu.s3.util.Pager;
 import com.iu.s3.util.Pager_backUp;
 
@@ -35,10 +36,22 @@ public class NoticeDAO implements BoardDAO{
 	public NoticeDTO getSelect(BoardDTO boardDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", boardDTO);
 	}
+	//추가 하기 전에 숫자 미리 받기
+	public long getNum()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
+	
+	
 	//추가
 	public int setInsert(BoardDTO boardDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsert", boardDTO);
 	}
+	
+	//파일추가
+	public int setFileInsert(BoardFileDTO boardfileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", boardfileDTO);
+	}
+	
 	//업데이트
 	public int setUpdate(BoardDTO boardDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);

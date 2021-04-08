@@ -20,7 +20,7 @@
 	<div class="container">
 		<h1>Notice Insert Page</h1>
 		<h1>v7</h1>
-		<form id="frm" action="./${board }Insert" method="post">
+		<form id="frm" action="./${board }Insert" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="writer">writer</label> <input type="text"
 					class="form-control mycheck" readonly="readonly" id="writer"
@@ -57,8 +57,8 @@
 		<div class="input-group" >
 			<div class="custom-file">
 				<input type="file" class="custom-file-input" id="inputGroupFile04"
-					aria-describedby="inputGroupFileAddon04"> <label
-					class="custom-file-label" for="inputGroupFile04">Choose
+					aria-describedby="inputGroupFileAddon04" name="files"> <label
+					class="custom-file-label" for="inputGroupFile04" >Choose
 					file</label>
 			</div>
 			<div class="input-group-append delete"><!-- class명 추가 -->

@@ -1,5 +1,6 @@
 package com.iu.s3.member;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -107,7 +108,9 @@ public class MemberController {
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
 	public String memberLogin(MemberDTO memberDTO, HttpSession session) throws Exception{
 		System.out.println("login--");
-		memberDTO=memberService.memberLogin(memberDTO);
+		memberDTO = memberService.memberLogin(memberDTO);
+	
+		
 		System.out.println(memberDTO);
 		
 		session.setAttribute("member", memberDTO);
