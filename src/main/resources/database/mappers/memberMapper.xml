@@ -41,6 +41,13 @@
     	<!-- 여기에 ;찍으니까 00911 떳음  -->
     </delete>
     
+    <select id="getMemberFile" parameterType="MemberDTO" resultType="MemberFileDTO">
+    	select fileName from memberFile where id = #{id}
+    
+    </select>
+    
+    
+    
     <update id="memberUpdate" parameterType="MemberDTO">
     	update member set id=#{id}, pw=#{pw}, name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
     </update>
