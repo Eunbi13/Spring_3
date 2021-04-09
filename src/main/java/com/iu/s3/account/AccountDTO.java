@@ -1,6 +1,6 @@
 package com.iu.s3.account;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class AccountDTO {
 

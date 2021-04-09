@@ -60,7 +60,7 @@
  			 <textarea class="form-control" rows="5" id="contents" ></textarea>
 		</div>
 		
-		<button type="button" class="btn btn-warning" id="write">write</button>
+		<button type="button" class="btn btn-warning" id="write" title="${dto.num }">write</button>
 	</div>
 	
 	

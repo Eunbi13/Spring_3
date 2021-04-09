@@ -1,6 +1,6 @@
 package com.iu.s3.board;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardDTO {
 	private long num;

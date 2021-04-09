@@ -10,6 +10,12 @@
     		select * from comments where num=#{num} order by commentNum desc
     	</select>
     
-    
+    	<insert id="setInsert" parameterType="CommentsDTO" >
+    		insert into comments values(notice_seq.nextval, #{num}, #{writer}, #{contents}, sysdate)
+    	</insert>
+    	
+    	<delete id="setDelete" parameterType="CommentsDTO">
+    		delete comments where commentNum=#{commentNum}
+    	</delete>
     
     </mapper>

@@ -1,6 +1,6 @@
 package com.iu.s3.board.comments;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CommentsDTO {
 	private long commentNum;
@@ -8,6 +8,7 @@ public class CommentsDTO {
 	private String writer;
 	private String contents;
 	private Date regDate;
+	
 	public long getCommentNum() {
 		return commentNum;
 	}
