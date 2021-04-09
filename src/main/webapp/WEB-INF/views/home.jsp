@@ -33,7 +33,7 @@
 	<button class="b">Button</button>
 	<button id="btn" class="b">Click</button>
 	<button id="btn2" class="b">Click</button>
-	<h1 id="t">version 8</h1>
+	<h1 id="t">version 2</h1>
 	
 	
 	<ol id="result">
@@ -50,7 +50,19 @@
 		</div>
 	</div>
 	
+	<!-- 0409 -->
 	<script type="text/javascript">
+		$("#btn2").click(function(){
+			//jquery의 ajax문법
+			$.get("./test?num=3", function(data){//여기 데이타로 응답이 온다
+				$("#d2").html(data);
+				console.log(data);
+			});
+		});
+		
+	</script>
+	
+	<!-- <script type="text/javascript">
 		$("#btn").click(function(){//이거 걍 안쓰고 반복문만 쓰면 페이지 열리자 마자 자바스크립트 활동함 ㅇㅇ
 			for(let i=1; i<13; i++){
 			$("#mon").append("<option>"+i+"</option>");
@@ -79,6 +91,6 @@
 			alert($("#t").text());
 		}); */
 		
-	</script>
+	</script> -->
 </body>
 </html>

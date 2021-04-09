@@ -58,10 +58,11 @@
 		update notice set hit=hit+1 where num=#{num}
 	</update>
 	
-	<select id="getNum" resultType="java.lang.Long">
-		select notice_seq.nextval from dual
-	</select>
+	
 	<insert id="setInsert" parameterType="BoardDTO">
+		<selectKey keyProperty="num" resultType="java.lang.Long" order="BEFORE">
+			select NOTICE_SEQ.nextval from dual
+		</selectKey>
 		INSERT INTO NOTICE
 		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE,0)
 	</insert>
@@ -77,8 +78,7 @@
 	</update>
 
 	<delete id="setDelete" parameterType="BoardDTO">
-		delete notice where
-		num=#{num}
+		delete notice where num=#{num}
 	</delete>
 
 	

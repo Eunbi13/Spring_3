@@ -19,7 +19,7 @@ public class QnaDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE= "com.iu.s3.board.qna.QnaDAO.";
 	
-	//===============select==================	
+	//===============List==================	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -30,6 +30,7 @@ public class QnaDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
+	//===============select==================	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -66,7 +67,7 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	
-	
+	//=============================delete===========================
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -78,7 +79,7 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	
-	
+	//=============================Update===========================
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

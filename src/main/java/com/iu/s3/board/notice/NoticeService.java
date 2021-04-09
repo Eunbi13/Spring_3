@@ -46,12 +46,11 @@ public class NoticeService implements BoardService {
 	//글 쓰기-------------------------------------------------------
 	public int setInsert(BoardDTO boardDTO, MultipartFile [] files)throws Exception{
 		
-		long num = noticeDAO.getNum();
 		
-		boardDTO.setNum(num);//글번호받아서 넣어주고
 		
-		int result = noticeDAO.setInsert(boardDTO);//생성하면 
-		//만들고 db에서 글번호를 찾을수있다
+		
+		int result = noticeDAO.setInsert(boardDTO); 
+		
 		
 	
 		//파일들을 hdd저장, 가져오기 
@@ -60,7 +59,7 @@ public class NoticeService implements BoardService {
 			
 			String fileName=fileManager.save("notice", mf, session);
 			
-			boardFileDTO.setNum(num);
+			boardFileDTO.setNum(boardDTO.getNum());
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOrigineName(mf.getOriginalFilename());
 			

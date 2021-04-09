@@ -29,6 +29,7 @@ public class QnaController {
 		mv.addObject("pager", pager);
 		return mv;
 	}
+	
 	@GetMapping("qnaSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
