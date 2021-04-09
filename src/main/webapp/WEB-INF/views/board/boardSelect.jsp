@@ -42,6 +42,15 @@
 		
 
 	</div>
+	
+	<!-- 댓글 리스트 -->
+	<div id="comments" title="${dto.num }"><!-- ajax에 넘길 데이터 태그에 넣기  -->
+	
+	</div>
+	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
+	
+	
+	
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
 	<a href="#" id="del" class="btn btn-info">Delete</a>
 	<c:if test="${board ne 'notice' }"><!-- 답글 달 때는 부모글(현재 보는글)에 대해서 정보를 넘겨줘야함 -->

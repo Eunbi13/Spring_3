@@ -100,7 +100,8 @@
 
 	$('#id').blur(function(){
 		let id = $('#id').val();
-		$.get("./memberIdCheck?id="+id, function(result){//요청이 발생하면 결과물(ajaxResult.jsp)은 result로 응답함
+		$.get("./memberIdCheck?id="+id, function(result){//여기도 매개변수라서 선언된거 
+			//요청이 발생하면 결과물(ajaxResult.jsp)은 result로 응답함
 			result = result.trim();//ajax를 다룰때 공백이 올수도잇음 그래서 trim으로 공백 제거함
 			//0오면 불가능 1오면 가능
 			let str="사용가능한 ID입니다.";
