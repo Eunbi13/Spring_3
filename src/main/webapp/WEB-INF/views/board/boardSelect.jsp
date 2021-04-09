@@ -47,16 +47,16 @@
 	<div id="comments" title="${dto.num }"><!-- ajax에 넘길 데이터 태그에 넣기  -->
 	
 	</div>
-	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
+	
 	
 	<!-- 댓글 폼 얘네가쓴 데이터를 ajax로 보내서 저장할거임 그리고 바로 출력한다구?-->
 	<div>
 		<div class="form-group">
-			  <label for="usr">Name:</label>
+			  <label for="writer">Name:</label>
 			  <input type="text" class="form-control" id="writer" >
 		</div>
 		<div class="form-group">
- 			 <label for="comment">Comment:</label>
+ 			 <label for="contents">Comment:</label>
  			 <textarea class="form-control" rows="5" id="contents" ></textarea>
 		</div>
 		
@@ -80,7 +80,8 @@
 	
 	
 </div>
-<script type="text/javascript">
+<script type="text/javascript" src="../resources/jquery/comments.js"></script>
+<script type="text/javascript" >
 	const del = document.getElementById("del");
 	const frm = document.getElementById("frm");
 	
