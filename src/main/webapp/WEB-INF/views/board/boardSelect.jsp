@@ -49,6 +49,20 @@
 	</div>
 	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 	
+	<!-- 댓글 폼 얘네가쓴 데이터를 ajax로 보내서 저장할거임 그리고 바로 출력한다구?-->
+	<div>
+		<div class="form-group">
+			  <label for="usr">Name:</label>
+			  <input type="text" class="form-control" id="writer" >
+		</div>
+		<div class="form-group">
+ 			 <label for="comment">Comment:</label>
+ 			 <textarea class="form-control" rows="5" id="contents" ></textarea>
+		</div>
+		
+		<button type="button" class="btn btn-warning" id="write">write</button>
+	</div>
+	
 	
 	
 	<a href="./${board }Update?num=${dto.num}" class="btn btn-danger">Update</a>
