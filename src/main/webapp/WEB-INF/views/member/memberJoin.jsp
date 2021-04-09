@@ -23,13 +23,13 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<h1>memberJoin page</h1>
-	<h1>v5</h1>
+	<h1>v55</h1>
 	<div class="container">
 		<form id="frm" action="./memberJoin" method="post"  enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text"
 					class="form-control" placeholder="Enter id" id="id" name="id">
-					<h6 id="idResult"></h6>
+					<h6 id="idCheckResult"></h6>
 			</div> <!-- id는 6글자 이상 아이디에서 블러 이벤트,,6글자 미만이면 <h4>사이에 6글자 미만입니다 출력-->
 			
 			<div class="form-group">
@@ -68,7 +68,7 @@
 		</form>
 
 	</div>
-	<!-- <script type="text/javascript" src="../resources/js/memberJoin.js"></script> -->
+	<script type="text/javascript" src="../resources/js/memberJoin.js"></script> 
 	
 </body>
 </html>

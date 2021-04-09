@@ -12,6 +12,12 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.s3.member.MemberDAO.";
 	
+	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", memberDTO);
+	}
+	
+	
 	//setFileInsert
 	public int setFileInsert(MemberFileDTO memberFileDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setFileInsert", memberFileDTO);

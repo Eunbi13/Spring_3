@@ -5,6 +5,12 @@
     
     <mapper namespace="com.iu.s3.member.MemberDAO"><!-- 마지막을 클래스 이름인 걸 기억하기!! -->
     <!-- 쿼리문 쓸 곳 -->
+    <select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
+    	select id from member where id=#{id}
+    </select>
+    
+    
+    
     <insert id="memberJoin" parameterType="MemberDTO">
     	insert into member(id, pw, name, phone, email) values (#{id}, #{pw}, #{name}, #{phone}, #{email})
     </insert>

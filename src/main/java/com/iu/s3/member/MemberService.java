@@ -21,6 +21,11 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	@Autowired
 	private FileManager fileManager;
+	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberIdCheck(memberDTO);
+	}
+	
 
 	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar, HttpSession session)throws Exception{
 		String fileName = fileManager.save("member", avatar, session);
