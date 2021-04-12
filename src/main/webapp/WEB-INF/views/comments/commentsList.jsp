@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <table class="table table-hover">
+<c:catch>
 	<c:forEach items="${list }" var="comment">
 		<tr>
 			<td>${comment.writer }</td>
@@ -15,6 +16,6 @@
 		
 	</c:forEach>
 </table>
-
+</c:catch>
 <button type="button" class="btn btn-danger" id="remove">Delete</button>
 

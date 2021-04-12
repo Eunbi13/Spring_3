@@ -17,10 +17,10 @@ public class CommentsController {
 	private CommentsService commentsService;
 	
 	@PostMapping("commentsDelete")
-	public String setDelete(int [] commentNum, CommentsDTO commentsDTO)throws Exception{//CommentsDTO [] 로는 못받는다 왜냐? 넘어오는게 int라서 타입이 x
+	public String setDelete(int [] commentNum)throws Exception{//CommentsDTO [] 로는 못받는다 왜냐? 넘어오는게 int라서 타입이 x
 		//여러개 삭제하는 건 서비스에서 하는 것
 		int result = commentsService.setDelete(commentNum);
-		System.out.println(result);
+		System.out.println("controller"+result);
 		return "comments/commentsList";
 	}
 	

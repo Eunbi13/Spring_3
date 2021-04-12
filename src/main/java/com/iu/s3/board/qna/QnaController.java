@@ -108,8 +108,8 @@ public class QnaController {
 	}
 	
 	@PostMapping("qnaUpdate")
-	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
-		int result = qnaService.setUpdate(boardDTO);
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv, MultipartFile [] files)throws Exception{
+		int result = qnaService.setUpdate(boardDTO, files);
 		if(result>0) {
 			mv.setViewName("redirect:./qnaList");
 		}else {

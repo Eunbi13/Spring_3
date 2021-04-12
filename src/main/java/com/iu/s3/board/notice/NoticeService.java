@@ -73,9 +73,37 @@ public class NoticeService implements BoardService {
 	
 	
 	//글수정
-	public int setUpdate(BoardDTO boardDTO)throws Exception{
-		return noticeDAO.setUpdate(boardDTO);
+	public int setUpdate(BoardDTO boardDTO, MultipartFile [] files)throws Exception{
+		for(MultipartFile file: files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			//1.hdd에 저장
+			String fileName=fileManager.save("notice", file, session);//파일 들어옴 
+			boardFileDTO.setNum(boardDTO.getNum());
+			System.out.println(boardDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOrigineName(file.getOriginalFilename());
+			
+			noticeDAO.setFileInsert(boardFileDTO);
+		}
+		
+		int result = noticeDAO.setUpdate(boardDTO);
+		
+		return result;
 	}
+	
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		//1조회
+		boardFileDTO = noticeDAO.getFileSelect(boardFileDTO);
+		System.out.println(boardFileDTO.getFileName());
+		//2 테이블 삭제
+		int result = noticeDAO.setFileDelete(boardFileDTO);		
+		//3 하드디스크에서 삭제 
+		if(result>0) {
+			fileManager.delete("notice", session, boardFileDTO.getFileName());
+		}
+		return result;
+	}
+	
 	//글 삭제
 	public int setDelete(BoardDTO boardDTO)throws Exception{
 		

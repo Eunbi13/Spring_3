@@ -76,6 +76,16 @@
 		update notice set
 		title=#{title}, contents=#{contents} where num=#{num}
 	</update>
+	
+	<!-- 업데이트하면서,,선택한 file지우기 -->
+	<select id="getFileSelect" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		select * from noticeFiles where fileNum=#{fileNum}
+	</select>
+	
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		delete noticeFiles where fileNum=#{fileNum}
+	</delete>
+	
 
 	<delete id="setDelete" parameterType="BoardDTO">
 		delete notice where num=#{num}

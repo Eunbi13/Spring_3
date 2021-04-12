@@ -1,5 +1,6 @@
 package com.iu.s3.board.notice;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardFileDTO;
 import com.iu.s3.member.MemberDTO;
 import com.iu.s3.util.Pager;
 import com.iu.s3.util.Pager_backUp;
@@ -88,11 +91,11 @@ public class NoticeController {
 	}
 	//글 수정 post
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{	
+	public ModelAndView setUpdate(BoardDTO boardDTO, HttpSession session, MultipartFile [] files, ModelAndView mv)throws Exception{	
 	
 		System.out.println("noticeUpdate--");
-		
-		int result =noticeService.setUpdate(boardDTO);
+		System.out.println(files.length);
+		int result =noticeService.setUpdate(boardDTO, files);
 		//성공하면 리스트 실패하면 alert창 하고 리스트로 이동
 		if(result>0) {
 			mv.setViewName("redirect:./noticeList");
@@ -123,5 +126,21 @@ public class NoticeController {
 		
 		return mv;
 	}
+	
+	//@file 삭제
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		int result = noticeService.setFileDelete(boardFileDTO);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		//왜인가? 요청은 자바스크립트 내에서 발생함 응답이 와야하는데 요청한 곳으로 응답이 옴,, 자바스크립트에서 에이작스에서 요청이 하면
+		//리절트라는 곳에서 받을거임(success: function(result))여기 ㅇㅇ
+		//요청이 url로 발생하고 응답을 받아야 하는데 여기 들어오는 데이터는 뭐일지 모르는데,, 받아서 하려고 하는건 삭제가 되었는지 아닌지 알고 싶음
+		//
+		//요청한데로 보내는데,, 왜 에이작스로 가냐고,,, 기본 구조는  
+		return mv;
+	}
+	
 	
 }

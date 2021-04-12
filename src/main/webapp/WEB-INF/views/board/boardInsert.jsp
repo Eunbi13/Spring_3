@@ -41,10 +41,10 @@
 			</div>
 			<!-- 비어잇음 x -->
 
-			<input type="button" id="add" value="ADD"
-				class="btn btn-danger float-right"> <input type="button"
-				id="del" value="DELETE" class="btn btn-primary float-right">
-			<div id="files">
+			<input type="button" id="add" value="ADD" class="btn btn-danger float-right"> 
+			<input type="button" id="del" value="DELETE" class="btn btn-primary float-right">
+			
+			<div id="files" title="0">
 				<!-- add를 클릭하면 sample태그가 이 div 내부에 붙여넣기 되면 좋겠다.append쓰래 단, 최대 5개까지만 만들어지도록 -->
 
 			</div>
@@ -68,40 +68,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		let count = 0;//전역변수
-		$("#add").click(function() {
-			let contents = $("#sample").html();
-
-			if (count < 5) {
-				$("#files").append(contents);
-				count++;
-			} else {
-				alert("최대 5개까지 가능합니다.")
-			}
-
-		});//#add
-
-		$('#del').click(function() {
-			//$("#files").remove();//files태그도 사라져버림
-			$("#files").empty();
-		});//#del
-		
-		$("#files").on("click",".delete", function(){
-			$(this).parent().remove();
-			//this = .delete의 부모의 부모를 삭제 이래야 내가 선택한 태그가 삭제되는 것
-			count--;
-		});//#files 이벤트 위임
-	
-			//이벤트를 먼저 걸면서 페이지가 로드 되는데! 얘가 잇는 거의 display:none이라서 없는 취급당함 때문에 이 아이디에는 이벤트가 안걸리는 것
-			//이미 이벤트 거는게 끝나서 실행이 안된다...그래서 이벤트 위임을 할거임!메모 참조
-	
-			
-		
-		
-	</script>
 
 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
-
 </body>
 </html>
