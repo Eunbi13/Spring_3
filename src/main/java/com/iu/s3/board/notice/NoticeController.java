@@ -31,9 +31,14 @@ public class NoticeController {
 	
 	
 	@PostMapping("summerFileUpload")
-	public void setSummerFileUpload(MultipartFile file)throws Exception{
-		System.out.println("summerFileUpload");
-		System.out.println(file.getOriginalFilename());
+	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
+		String fileName = noticeService.setSummerFileUpload(file);
+		//경로명도 만들겠다 ajax success로 갈 ㅇㅇ 파일 선택도 해줘야 뭐 갖다 주는지 알거고,,
+		fileName="../resources/upload/notice/"+fileName;
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		return mv;
 	}
 	
 	

@@ -83,7 +83,7 @@
 				onImageUpload: function(files) {//files는 배열이고 이미지고 
 				// upload image to server and create imgNode...
 				//$summernote.summernote('insertNode', imgNode);
-				uploadFile(files);
+				 uploadFile(files);
 				}
 			}
 		});
