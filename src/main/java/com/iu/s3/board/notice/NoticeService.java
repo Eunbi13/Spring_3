@@ -24,6 +24,11 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private HttpSession session;
 	
+	public boolean setSummerFileDelete(String fileName)throws Exception{
+		boolean result = fileManager.delete("notice", session, fileName);
+		return result;
+	}
+	
 	public String setSummerFileUpload(MultipartFile file)throws Exception{
 		String fileName = fileManager.save("notice", file, session);//데이터 베이스에 저장안함 첨부파일이니까 그래서 폴더도 다른데 해도 ㄱㅊㄱㅊ
 		return fileName;//이미지 경로 적어줘야해서 ㅇㅇ

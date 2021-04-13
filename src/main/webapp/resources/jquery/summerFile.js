@@ -1,6 +1,25 @@
 /**
  * 
  */
+$('#contents').summernote({
+	 height: 500,
+	 placeholder: 'write here...',
+	 callbacks: {
+		onImageUpload: function(files) {//files는 배열이고 이미지고 
+		// upload image to server and create imgNode...
+		//$summernote.summernote('insertNode', imgNode);
+		 uploadFile(files);
+		},//==onImageUpload end
+		onMediaDelete: function(files){//이미지 코드가 배열로 넘어온다
+			deleteFile(files);
+		}
+		
+	
+	}//==callbacks end
+});
+
+		
+		
 
 function uploadFile(files){//이미지 업로드 하면 호출
 	
@@ -26,4 +45,15 @@ function uploadFile(files){//이미지 업로드 하면 호출
 	});
 	
 	
-}
+};
+
+
+
+function deleteFile(files){//뒤에서 첫번째 슬러쉬
+	let fileName = $(files[0]).attr("src");
+	let index = fileName.lastIndexOf("/");
+	fileName=fileName.substring(index+1);
+	$.post("summerFileDelete", {fileName: fileName}, function(result){
+		console.result;
+	});
+};

@@ -22,12 +22,24 @@ import com.iu.s3.member.MemberDTO;
 import com.iu.s3.util.Pager;
 import com.iu.s3.util.Pager_backUp;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping(value="/notice/**")
 public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@PostMapping("summerFileDelete")
+	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = noticeService.setSummerFileDelete(fileName);
+		System.out.println(result);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 	
 	
 	@PostMapping("summerFileUpload")

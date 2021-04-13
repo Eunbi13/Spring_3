@@ -75,21 +75,6 @@
 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 	<script type="text/javascript" src="../resources/jquery/fileAdd.js"></script>
 	<script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
-	<script type="text/javascript">
-		$('#contents').summernote({
-			 height: 500,
-			 placeholder: 'write here...',
-			 callbacks: {
-				onImageUpload: function(files) {//files는 배열이고 이미지고 
-				// upload image to server and create imgNode...
-				//$summernote.summernote('insertNode', imgNode);
-				 uploadFile(files);
-				}
-			}
-		});
-		
-		
-		
-	</script>
+	
 </body>
 </html>
