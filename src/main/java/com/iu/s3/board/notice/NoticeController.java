@@ -28,6 +28,20 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	
+	@PostMapping("summerFileUpload")
+	public void setSummerFileUpload(MultipartFile file)throws Exception{
+		System.out.println("summerFileUpload");
+		System.out.println(file.getOriginalFilename());
+	}
+	
+	
+	
+	
+	
+	
+	
 	//리스트
 	@RequestMapping(value="noticeList")
 	public ModelAndView getList(Pager pager /* @RequestParam(defaultValue = "1") long curPage */)throws Exception{

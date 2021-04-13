@@ -6,12 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<!-- summernote -->
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 <style type="text/css">
 #sample {
 	display: none;/*  자리도 없고 내용도 없어서 버튼도 안눌리고 걍 투명취급 */
 }
 </style>
-
 
 <title>Insert title here</title>
 </head>
@@ -70,5 +73,23 @@
 
 
 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
+	<script type="text/javascript" src="../resources/jquery/fileAdd.js"></script>
+	<script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
+	<script type="text/javascript">
+		$('#contents').summernote({
+			 height: 500,
+			 placeholder: 'write here...',
+			 callbacks: {
+				onImageUpload: function(files) {//files는 배열이고 이미지고 
+				// upload image to server and create imgNode...
+				//$summernote.summernote('insertNode', imgNode);
+				uploadFile(files);
+				}
+			}
+		});
+		
+		
+		
+	</script>
 </body>
 </html>
