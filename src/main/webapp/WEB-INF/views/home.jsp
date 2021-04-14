@@ -31,11 +31,17 @@
 <body>
 	<c:import url="./template/header.jsp"></c:import>
 
-	<button class="b">Button</button>
+	<button class="b" id="btn1">Button</button>
 	<button id="btn" class="b">Click</button>
 	<button id="btn2" class="b">Click</button>
+	<input type="text" id="num">
 	<h1 id="t">version 2</h1>
-	
+	<button id="btn3">here</button>
+	<input type="text" id="exchange">
+	<div>
+		<h3 id="krw"></h3>
+		<h3 id="usd"></h3>
+	</div>
 	
 	<ol id="result">
 		<li>A</li>
@@ -46,8 +52,10 @@
 	</select>
 	
 	<div id="d1">
+		<h3 id="d3"></h3>
+		<h3 id="d4"></h3>
 		<div id="d2">
-			
+			<!-- title, contents 뿌리기  -->
 		</div>
 	</div>
 	
@@ -58,13 +66,78 @@
 	
 	
 	<script type="text/javascript">
-	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-		level: 3 //지도의 레벨(확대, 축소 정도)
-	};
+	
+	getMap(33.450701, 126.570667);
+	
+	function getMap(lat, lng){
+		
+		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center: new kakao.maps.LatLng(lat, lng), //지도의 중심좌표.
+			level: 3 //지도의 레벨(확대, 축소 정도)
+			};
+		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	}
+	
 
-	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	//json실습
+	$('#btn2').click(function(){
+		let num = $("#num").val();
+		console.log(num);
+		$.get("https://jsonplaceholder.typicode.com/posts/"+num, function(data){
+			alert(data);//Object object
+			console.log(data);//내용물 뜸 
+			
+			$("#d3").text(data.title);
+			$("#d4").html(data.body);
+			
+			
+			//data = JSON.parse(data);이미 json이다.parse필요 없다.
+			//alert(data.title);
+		});
+		
+	});
+	
+	$("#btn3").click(function(){
+		let money=$("#exchange").val();
+		$.ajax({
+			type:"GET",
+			url:"https://api.manana.kr/exchange/price.json",
+			data:{
+				base:"KRW",
+				price: money,
+				code:"KRW,USD,JPY"
+			},
+			success: function(data){
+				console.log(data)
+				$("#krw").html(data.KRW);
+				$("#usd").html(data.USD)
+			}
+		})
+				
+	});
+	
+	$("#btn1").click(function(){
+		$.get("https://jsonplaceholder.typicode.com/users", function(data){
+			console.log(data)
+			for(index of data){
+				console.log(index.company);
+				console.log(index.company.name)
+			}
+			
+			console.log(data[0].address.geo.lat)
+			console.log(data[0].address.geo.lng)
+			let t = parseFloat(data[0].address.geo.lat)
+			let n = parseFloat(data[0].address.geo.lng)
+			getMap(33.333333, 126.555555);
+		})
+		
+		//첫번째 유저의 geo중 lat, lng속성이 있음 
+		
+	});
+	
+	
+	
 	<!-- 0409 -->
 		/* $("#btn2").click(function(){
 			//jquery의 ajax문법
